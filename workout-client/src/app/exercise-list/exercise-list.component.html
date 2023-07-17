@@ -1,0 +1,22 @@
+<div>
+    <h1>Exercises</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Notes</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of exercises">
+                    <td>{{item.exerciseName}}</td>
+                    <td>{{item.exerciseDesc}}</td>
+                    <td>{{item.exercisePic}}</td>
+                </tr>
+            </tbody>
+    </table>
+
+    </div>
+</div>
