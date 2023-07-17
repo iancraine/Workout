@@ -30,6 +30,56 @@ public class JdbcExerciseDao implements ExerciseDao{
         return results;
     }
 
+    @Override
+    public Exercise getExerciseById(int exerciseId) {
+        Exercise exercise = null;
+        String sql = "SELECT exercise_id, exercise_name, exercise_desc, exercise_pic\n" +
+                "FROM exercise "+
+                "WHERE exercise_id = ?;";
+
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, exerciseId);
+        while (row.next()){
+            exercise = mapRowToExercise(row);
+        }
+        return exercise;
+    }
+
+    @Override
+    public Exercise addNewExercise(Exercise newExercise) {
+        Exercise addedExercise;
+        String sql = "INSERT INTO exercise(exercise_name, exercise_desc, exercise_pic) " +
+                "VALUES (?,?,?) RETURNING exercise_id;\n";
+        int newExerciseId = jdbcTemplate.queryForObject(sql, Integer.class, newExercise.getExerciseName(),
+                newExercise.getExerciseDesc(), newExercise.getExercisePic());
+
+        addedExercise = getExerciseById(newExerciseId);
+
+        return addedExercise;
+    }
+
+    @Override
+    public Exercise modifyExercise(Exercise modifiedExercise, int exerciseId) {
+        Exercise changedExercise;
+        String sql = "UPDATE exercise SET exercise_name = ?, " +
+                "exercise_desc = ?, exercise_pic = ? WHERE exercise_id = ?;";
+        jdbcTemplate.update(sql, modifiedExercise.getExerciseName(), modifiedExercise.getExerciseDesc(),
+                modifiedExercise.getExercisePic(), exerciseId);
+
+        changedExercise = getExerciseById(exerciseId);
+        return changedExercise;
+    }
+
+    @Override
+    public void deleteExercise(int exerciseId) {
+        String sql = "DELETE FROM workout_exercise WHERE exercise_id = ?;";
+        jdbcTemplate.update(sql, exerciseId);
+        sql = "DELETE FROM target_exercise WHERE exercise_id = ?;";
+        jdbcTemplate.update(sql, exerciseId);
+        sql = "DELETE FROM exercise WHERE exercise_id = ?;";
+        jdbcTemplate.update(sql, exerciseId);
+    }
+
     private Exercise mapRowToExercise(SqlRowSet rowSet) {
         Exercise result = new Exercise();
 
@@ -39,10 +89,5 @@ public class JdbcExerciseDao implements ExerciseDao{
         result.setExercisePic(rowSet.getString("exercise_pic"));
 
         return result;
-    }
-
-    @Override
-    public Exercise getExercise(int exerciseId) {
-        return null;
     }
 }

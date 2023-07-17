@@ -6,6 +6,12 @@ import java.util.List;
 
 public interface ExerciseDao {
     List<Exercise> getAllExercises();
-    Exercise getExercise(int exerciseId);
+    Exercise getExerciseById(int exerciseId);
+
+    Exercise addNewExercise(Exercise newExercise);
+
+    Exercise modifyExercise(Exercise modifiedExercise, int exerciseId);
+
+    void deleteExercise(int exerciseId);
 
 }
