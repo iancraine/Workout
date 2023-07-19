@@ -3,13 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ExerciseListComponent } from './exercise-list/exercise-list.component';
+import { ExerciseListComponent } from 'src/app/components/exercise-list/exercise-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExerciseListComponent
+    ExerciseListComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

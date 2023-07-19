@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ExerciseListService } from '../services/exercise-list.service';
-import { Exercise } from '../models/exercise';
+import { ExerciseListService } from 'src/app/services/exercise-list.service';
+import { Exercise } from 'src/app/models/exercise';
 
 @Component({
   selector: 'app-exercise-list',

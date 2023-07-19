@@ -1,0 +1,14 @@
+#app {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "nav"
+                          "view";
+    gap: 50px;
+}
+app-navbar{
+    grid-area: nav;
+}
+router-outlet{
+    grid-area: view;
+
+}
