@@ -3,7 +3,7 @@
     grid-template-columns: 1fr;
     grid-template-areas: "nav"
                           "view";
-    gap: 50px;
+    gap: 2.5rem;
 }
 app-navbar{
     grid-area: nav;

@@ -1,22 +1,29 @@
-<div>
-    <h1>Exercises</h1>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Notes</th>
-                    <th>Picture</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of exercises">
-                    <td>{{item.exerciseName}}</td>
-                    <td>{{item.exerciseDesc}}</td>
-                    <td>{{item.exercisePic}}</td>
-                </tr>
-            </tbody>
-    </table>
+<div class="page">
+    <div class="page-title">
+      <h2 class="title">Exercises</h2>
+    
+      <div class="button-container">
+        <button class="addNewExercise">Add New Exercise</button>
+      </div>
 
+    </div> 
+    
+    <div class="exercises-background">
+        <div class="exercise">
+            <div *ngFor="let item of exercises" class="exercise-card"> 
+                <div id="exercise-box">
+                    <h1>{{item.exerciseName}}</h1>
+
+                    <div class="image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU" alt="" class="exercise-pic">
+                    </div>
+
+                    <div class="description">
+                        <h5 class="description">Description: </h5>
+                        <p class="description-box">{{item.exerciseDesc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
