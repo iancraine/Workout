@@ -80,6 +80,23 @@ public class JdbcExerciseDao implements ExerciseDao{
         jdbcTemplate.update(sql, exerciseId);
     }
 
+    @Override
+    public List<Exercise> getExerciseByTarget(int targetId) {
+        List<Exercise> results = new ArrayList<>();
+        String sql = "SELECT exercise.exercise_id, exercise.exercise_name, \n" +
+                "exercise.exercise_desc, exercise.exercise_pic, target_exercise.target_id FROM exercise\n" +
+                "JOIN target_exercise ON target_exercise.exercise_id = exercise.exercise_id\n" +
+                "WHERE target_id = 1;";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, targetId);
+
+        while (rowSet.next()){
+            Exercise exercise = mapRowToExercise(rowSet);
+            results.add(exercise);
+        }
+        return results;
+    }
+
     private Exercise mapRowToExercise(SqlRowSet rowSet) {
         Exercise result = new Exercise();
 

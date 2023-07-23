@@ -14,4 +14,6 @@ public interface ExerciseDao {
 
     void deleteExercise(int exerciseId);
 
+    List<Exercise> getExerciseByTarget(int targetId);
+
 }
