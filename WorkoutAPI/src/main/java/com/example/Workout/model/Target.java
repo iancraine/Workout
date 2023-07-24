@@ -1,30 +1,30 @@
 package com.example.Workout.model;
 
 public class Target {
-    private int id;
-    private String name;
+    private int targetId;
+    private String targetName;
 
     public Target() {
     }
 
-    public Target(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Target(int targetId, String targetName) {
+        this.targetId = targetId;
+        this.targetName = targetName;
     }
 
-    public int getId() {
-        return id;
+    public int getTargetId() {
+        return targetId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTargetId(int targetId) {
+        this.targetId = targetId;
     }
 
-    public String getName() {
-        return name;
+    public String getTargetName() {
+        return targetName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
     }
 }

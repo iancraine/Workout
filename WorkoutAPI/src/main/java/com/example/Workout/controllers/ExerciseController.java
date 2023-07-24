@@ -19,7 +19,7 @@ public class ExerciseController {
         return this.exerciseDao.getAllExercises();
     }
 
-    @RequestMapping(path = "/exercises/{exerciseId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/exercise/{exerciseId}", method = RequestMethod.GET)
     public Exercise getExerciseById(@PathVariable int exerciseId){
         return exerciseDao.getExerciseById(exerciseId);
     }
@@ -37,5 +37,10 @@ public class ExerciseController {
     @RequestMapping(path = "/{exerciseId}", method = RequestMethod.DELETE)
     public void deleteExercise(@PathVariable int exerciseId){
         exerciseDao.deleteExercise(exerciseId);
+    }
+
+    @RequestMapping(path = "/exercises/{targetId}", method = RequestMethod.GET)
+    public List<Exercise> getExercisesByTarget(@PathVariable int targetId){
+        return this.exerciseDao.getExerciseByTarget(targetId);
     }
 }

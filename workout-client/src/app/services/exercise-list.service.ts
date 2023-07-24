@@ -12,6 +12,10 @@ export class ExerciseListService {
 
   getAllExercises() : Observable<Exercise[]>{
     return this.http.get<Exercise[]>("http://localhost:3000/exercises");
+  }
 
+  // Pass targetId from click on exercises page
+  getExercisesByTarget(targetId: number) : Observable<Exercise[]> {
+    return this.http.get<Exercise[]>(`http://localhost:3000/exercises/${targetId}`);
   }
 }

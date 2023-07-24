@@ -52,7 +52,7 @@ public class JdbcTargetDao implements TargetDao {
         String sql = "INSERT INTO target(target_name) " +
                 "VALUES (?) RETURNING target_id;\n";
         int newTargetId = jdbcTemplate.queryForObject(sql, Integer.class,
-                newTarget.getName());
+                newTarget.getTargetName());
 
         addedTarget = getTargetById(newTargetId);
 
@@ -63,7 +63,7 @@ public class JdbcTargetDao implements TargetDao {
     public Target modifyTarget(Target modifiedTarget, int targetId) {
         Target changedTarget;
         String sql = "UPDATE target SET target_name = ?";
-        jdbcTemplate.update(sql, modifiedTarget.getName());
+        jdbcTemplate.update(sql, modifiedTarget.getTargetName());
 
         changedTarget = getTargetById(targetId);
         return changedTarget;
@@ -80,8 +80,8 @@ public class JdbcTargetDao implements TargetDao {
     private Target mapRowToTarget(SqlRowSet rowSet) {
         Target result = new Target();
 
-        result.setId(rowSet.getInt("target_id"));
-        result.setName(rowSet.getString("target_name"));
+        result.setTargetId(rowSet.getInt("target_id"));
+        result.setTargetName(rowSet.getString("target_name"));
 
         return result;
     }

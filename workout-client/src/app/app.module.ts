@@ -7,13 +7,15 @@ import { ExerciseListComponent } from 'src/app/components/exercise-list/exercise
 import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { TargetListComponent } from './components/target-list/target-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExerciseListComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    TargetListComponent
   ],
   imports: [
     BrowserModule,

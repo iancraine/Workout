@@ -10,8 +10,6 @@ import { Exercise } from 'src/app/models/exercise';
 })
 export class ExerciseListComponent implements OnInit {
 
-  //Throwing Error Message 
-// exercises: any;
 
   public exercises: Exercise[] = [];
 
