@@ -86,7 +86,7 @@ public class JdbcExerciseDao implements ExerciseDao{
         String sql = "SELECT exercise.exercise_id, exercise.exercise_name, \n" +
                 "exercise.exercise_desc, exercise.exercise_pic, target_exercise.target_id FROM exercise\n" +
                 "JOIN target_exercise ON target_exercise.exercise_id = exercise.exercise_id\n" +
-                "WHERE target_id = 1;";
+                "WHERE target_id = ?;";
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, targetId);
 

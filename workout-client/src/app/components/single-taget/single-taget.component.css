@@ -24,7 +24,6 @@
     padding: 0 ;
 }
 .exercise-card{
-    /* width: 20rem; */
     width: calc(100% * (1/4) - 1rem);
 }
 #exercise-box{

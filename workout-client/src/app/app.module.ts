@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { TargetListComponent } from './components/target-list/target-list.component';
+import { SingleTagetComponent } from './components/single-taget/single-taget.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TargetListComponent } from './components/target-list/target-list.compon
     ExerciseListComponent,
     NavbarComponent,
     HomeComponent,
-    TargetListComponent
+    TargetListComponent,
+    SingleTagetComponent
   ],
   imports: [
     BrowserModule,

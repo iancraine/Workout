@@ -2,7 +2,12 @@
 
     <!-- Side scroll bar for all groups on click route to single target
     component to list exercises in group -->
-    <div *ngFor="let item of targets">
-        <h1>{{item.targetName}}</h1>
+    <div class="target-scroller snaps-inline">
+        <div *ngFor="let item of targets">
+            <div class="target-element">
+                <a [routerLink]="['/exercises', item.targetId]"><h1>{{item.targetName}}</h1></a>
+            </div>
+        </div>
+        <div class="target-element">Add A Group</div>
     </div>
 </div>

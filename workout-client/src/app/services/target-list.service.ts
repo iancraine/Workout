@@ -12,6 +12,8 @@ export class TargetListService {
 
   getAllTargets() : Observable<Target[]>{
     return this.http.get<Target[]>("http://localhost:3000/groups");
-
+  }
+  getTargetById(targetId: string): Observable<Target>{
+    return this.http.get<Target>(`http://localhost:3000/group/${targetId}`);
   }
 }

@@ -1,0 +1,34 @@
+.target-scroller{
+    display: grid;
+    
+    /* causing side scroll */
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-auto-columns: 13%;
+
+    padding: 0 1rem 1rem;
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+.target-element{
+    justify-content: center;
+    display: grid;
+    grid-template-rows: min-content;
+    gap: 1rem;
+    padding: 1rem;
+    background: hsl(248, 80%, 14%);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.snaps-inline{
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1rem;
+}
+.snaps-inline > * {
+    scroll-snap-align: start;
+
+}
+a{
+    color: inherit;
+}
