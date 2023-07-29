@@ -90,25 +90,37 @@ public class JdbcWorkoutDao implements WorkoutDao{
         String sql = "UPDATE workout SET workout_name = ?, workout_note = ?, workout_date = ?, favorite = ? " +
                 "WHERE workout_id = ?;";
         jdbcTemplate.update(sql, modifiedWorkout.get(0).getWorkoutName(), modifiedWorkout.get(0).getWorkoutNote(),
-                modifiedWorkout.get(0).getWorkoutDate(), modifiedWorkout.get(0).isFavorite());
+                modifiedWorkout.get(0).getWorkoutDate(), modifiedWorkout.get(0).isFavorite(), modifiedWorkout.get(0).getWorkoutId());
 
-        sql = "UPDATE workout_exercise SET exercise_id = ?, sets_completed = ?, reps_time = ? " +
-                "WHERE workout_id = ?;";
-        for (Workout exercise: modifiedWorkout){
-            jdbcTemplate.update(sql, exercise.getExerciseId(), exercise.getSetsCompleted(), exercise.getRepsTime(),
-                    exercise.getWorkoutId());
-        }
+
+        //Probably dont need to this functionality but if needed will need a new PK on workout_exercise
+//        sql = "UPDATE workout_exercise SET exercise_id = ?, sets_completed = ?, reps_time = ? " +
+//                "WHERE workout_id = ?;";
+//        for (Workout exercise: modifiedWorkout){
+//            jdbcTemplate.update(sql, exercise.getExerciseId(), exercise.getSetsCompleted(), exercise.getRepsTime(),
+//                    exercise.getWorkoutId());
+//        }
         return getWorkoutById(modifiedWorkout.get(0).getWorkoutId());
     }
 
     @Override
     public void deleteWorkout(int workoutId) {
+        String sql = "DELETE FROM workout_exercise WHERE workout_id = ?;";
+        jdbcTemplate.update(sql, workoutId);
 
+        sql = "DELETE FROM workout WHERE workout_id = ?;";
+        jdbcTemplate.update(sql, workoutId);
     }
 
     @Override
     public List<Workout> addExercisesToWorkout(List<Workout> newWorkout) {
-        return null;
+        String sql = "INSERT INTO workout_exercise(workout_id, exercise_id, sets_completed, reps_time) " +
+                "VALUES (?, ?, ?, ?);";
+        for (Workout exercise: newWorkout){
+            jdbcTemplate.update(sql, exercise.getWorkoutId(), exercise.getExerciseId(), exercise.getSetsCompleted(),
+                    exercise.getRepsTime());
+        }
+        return getWorkoutById(newWorkout.get(0).getWorkoutId());
     }
 
     private Workout mapRowToWorkout(SqlRowSet rowSet) {

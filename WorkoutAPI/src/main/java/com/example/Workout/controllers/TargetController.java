@@ -35,7 +35,7 @@ public class TargetController {
         return this.targetDao.modifyTarget(target, targetId);
     }
 
-    @RequestMapping(path = "/edit/{targetId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/remove/{targetId}", method = RequestMethod.DELETE)
     public void deleteTarget(@PathVariable int targetId){
         targetDao.deleteTarget(targetId);
     }
