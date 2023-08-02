@@ -1,0 +1,21 @@
+<div class="page">
+    <div class="page-title">
+        <h2 class="title">Saved Workouts</h2>
+    </div>
+
+    <div class="details-background">
+        <div class="elements-container">
+            <div *ngFor="let day of workouts" class="card"> 
+                <div class="element">
+                    <h1>{{day[0].workoutName}}</h1>
+
+                    <div class="element-description">
+                        <h5>Date: </h5>
+                        <p class="description-box">{{day[0].workoutDate}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

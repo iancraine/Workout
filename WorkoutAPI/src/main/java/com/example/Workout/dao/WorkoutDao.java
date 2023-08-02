@@ -7,6 +7,7 @@ import java.util.List;
 public interface WorkoutDao {
 //    Displays on log
     List<List<Workout>> getAllWorkouts();
+    List<List<Workout>> getStarredWorkouts();
 //    Displays on favorites
     List<Workout> getWorkoutById(int workoutId);
 //    Start new workout

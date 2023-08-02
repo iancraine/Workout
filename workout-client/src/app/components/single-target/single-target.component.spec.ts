@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingleTagetComponent } from './single-taget.component';
+import { SingleTagetComponent } from './single-target.component';
 
 describe('SingleTagetComponent', () => {
   let component: SingleTagetComponent;

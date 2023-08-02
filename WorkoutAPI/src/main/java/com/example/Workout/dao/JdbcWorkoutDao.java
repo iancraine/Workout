@@ -19,12 +19,54 @@ public class JdbcWorkoutDao implements WorkoutDao{
     public List<List<Workout>> getAllWorkouts() {
         List<Workout> workouts = new ArrayList<>();
 
-        String sql = "SELECT w.workout_id, w.workout_name, w.workout_note, \n" +
-                "w.workout_date, w.favorite, \n" +
+//        String sql = "SELECT w.workout_id, w.workout_name, w.workout_note, \n" +
+//                "w.workout_date, w.favorite, \n" +
+//                "we.exercise_id, we.sets_completed, we.reps_time \n" +
+//                "FROM workout w \n" +
+//                "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
+//                "ORDER BY w.workout_id;";
+
+        String sql ="SELECT w.workout_id, w.workout_name, w.workout_note, w.workout_date, w.favorite, \n" +
                 "we.exercise_id, we.sets_completed, we.reps_time \n" +
                 "FROM workout w \n" +
                 "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
-                "ORDER BY w.workout_id;";
+                "ORDER BY w.workout_date DESC,  w.workout_id;";
+
+        SqlRowSet row =jdbcTemplate.queryForRowSet(sql);
+
+        while (row.next()){
+            workouts.add(mapRowToWorkout(row));
+        }
+
+        List<List<Workout>> nestedWorkouts = new ArrayList<>();
+        int currentWorkoutId = 0;
+        int newListIndex = -1;
+
+        for (int i=0; i<workouts.size();i++){
+            if (workouts.get(i).getWorkoutId() != currentWorkoutId){
+                List<Workout> currentWorkout = new ArrayList<>();
+                currentWorkout.add(workouts.get(i));
+                nestedWorkouts.add(currentWorkout);
+                currentWorkoutId = workouts.get(i).getWorkoutId();
+                newListIndex++;
+            }else {
+                nestedWorkouts.get(newListIndex).add(workouts.get(i));
+            }
+        }
+
+        return nestedWorkouts;
+    }
+
+    @Override
+    public List<List<Workout>> getStarredWorkouts() {
+        List<Workout> workouts = new ArrayList<>();
+
+        String sql ="SELECT w.workout_id, w.workout_name, w.workout_note, w.workout_date, w.favorite, \n" +
+                "we.exercise_id, we.sets_completed, we.reps_time \n" +
+                "FROM workout w \n" +
+                "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
+                "WHERE w.favorite = true\n" +
+                "ORDER BY w.workout_date DESC;";
 
         SqlRowSet row =jdbcTemplate.queryForRowSet(sql);
 
@@ -94,6 +136,7 @@ public class JdbcWorkoutDao implements WorkoutDao{
 
 
         //Probably dont need to this functionality but if needed will need a new PK on workout_exercise
+
 //        sql = "UPDATE workout_exercise SET exercise_id = ?, sets_completed = ?, reps_time = ? " +
 //                "WHERE workout_id = ?;";
 //        for (Workout exercise: modifiedWorkout){

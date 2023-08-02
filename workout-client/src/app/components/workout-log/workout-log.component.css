@@ -1,0 +1,44 @@
+.page{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: hsl(248, 79%, 19%);
+}
+.title{
+    color: white;
+    font-size: 42px;
+    padding: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.details-background{
+    background-color: hsl(248, 79%, 19%);
+    flex: 1 1 auto ;
+}
+.elements-container{
+    justify-content: center;
+}
+.card{
+    width: 30rem;
+    margin: 0 auto;
+}
+.element{
+    background-color: hsl(248, 80%, 14%);
+    border-radius: 1.5rem;
+    border: solid 3px black;
+    margin: 2rem;
+}
+.element > *{
+    text-align: center;
+}
+.element-description{
+    padding: 5px;
+}
+button:focus{
+    outline: 0 solid transparent;
+}
+.element:hover {
+    border: 1px solid #4a7545;
+    border-radius: 9px;
+    box-shadow: 0 0 4px 1px rgba(25, 247, 121, 0.925);
+}

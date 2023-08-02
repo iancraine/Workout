@@ -1,14 +1,12 @@
 #app {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "nav"
-                          "view";
+    display: flex;
+    flex-flow: column;
     gap: 2.5rem;
 }
 app-navbar{
-    grid-area: nav;
+    flex: 0 1 auto;
 }
 router-outlet{
-    grid-area: view;
+    flex: 1 1 auto;
 
 }

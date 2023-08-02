@@ -7,11 +7,11 @@ import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 
 @Component({
-  selector: 'app-single-taget',
-  templateUrl: './single-taget.component.html',
-  styleUrls: ['./single-taget.component.css']
+  selector: 'app-single-target',
+  templateUrl: './single-target.component.html',
+  styleUrls: ['./single-target.component.css']
 })
-export class SingleTagetComponent implements OnInit{
+export class SingleTargetComponent implements OnInit{
 
   public exercises: Exercise[] = [];
   public targetId: string = '';

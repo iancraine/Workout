@@ -19,6 +19,10 @@ public class WorkoutController {
     public List<List<Workout>> getAllWorkouts(){
         return this.workoutDao.getAllWorkouts();
     }
+    @RequestMapping(path = "/starred", method = RequestMethod.GET)
+    public List<List<Workout>> getStarredWorkouts(){
+        return this.workoutDao.getStarredWorkouts();
+    }
 
     @RequestMapping(path = "/workout/{workoutId}", method = RequestMethod.GET)
     public List<Workout> getWorkoutById(@PathVariable int workoutId){
