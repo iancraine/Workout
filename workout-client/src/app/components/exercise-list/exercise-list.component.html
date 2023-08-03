@@ -5,8 +5,9 @@
       <app-target-list/>
     
       <div class="button-container">
-        <button class="addNewExercise">Add New Exercise</button>
+        <button (click)="toggleForm()" class="addNewExercise">Add New Exercise</button>
       </div>
+      <app-new-exercise *ngIf="showForm"/>
 
     </div> 
     

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { TargetListComponent } from './components/target-list/target-list.compon
 import { SingleTargetComponent } from './components/single-target/single-target.component';
 import { WorkoutLogComponent } from './components/workout-log/workout-log.component';
 import { StarredWorkoutListComponent } from './components/starred-workout-list/starred-workout-list.component';
+import { NewExerciseComponent } from './components/new-exercise/new-exercise.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { StarredWorkoutListComponent } from './components/starred-workout-list/s
     TargetListComponent,
     SingleTargetComponent,
     WorkoutLogComponent,
-    StarredWorkoutListComponent
+    StarredWorkoutListComponent,
+    NewExerciseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

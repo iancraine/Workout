@@ -1,0 +1,41 @@
+<div class="container mt-5">
+
+    <div class="form-area">
+
+        <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit(exerciseForm)">
+            <div class="form-group">
+                <input 
+                type="text" 
+                placeholder="Exercise Name" 
+                class="form-control" 
+                name="exerciseName" 
+                ngModel 
+                #exerciseName = 'ngModel' 
+                required
+                minlength="1"
+                [ngClass]="{'is-invalid': exerciseName.touched && exerciseName.invalid}">
+            </div>
+            <div *ngIf="exerciseName.errors?.['required']">
+                <div *ngIf="exerciseName.touched && exerciseName.invalid">Must include a name</div>
+            </div>
+    
+            <div class="form-group">
+                <label>Description </label>
+                <textarea cols="30" rows="10" placeholder="Exercise Description" class="form-control" name="exerciseDesc" ngModel></textarea>
+            </div>
+    
+            <div class="form-group">
+                <label>Picture </label>
+                <input type="file" 
+                accept="image/*" 
+                class="form-control" 
+                name="exercisePic" 
+                ngModel
+                (change)="onFileChange($event)">
+            </div>
+    
+            <button type="submit" [disabled]="exerciseForm.invalid">Add</button>
+        </form>
+    </div>
+</div>
+

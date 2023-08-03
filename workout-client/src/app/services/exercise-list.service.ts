@@ -8,14 +8,22 @@ import { Exercise } from '../models/exercise';
 })
 export class ExerciseListService {
 
-  constructor(private http:HttpClient) { }
+  private baseUrl!: string
+
+  constructor(private http:HttpClient) {
+    this.baseUrl = 'http://localhost:3000'
+   }
 
   getAllExercises() : Observable<Exercise[]>{
-    return this.http.get<Exercise[]>("http://localhost:3000/exercises");
+    return this.http.get<Exercise[]>(this.baseUrl+"/exercises");
   }
 
   // Pass targetId from click on exercises page
   getExercisesByTarget(targetId: string) : Observable<Exercise[]> {
-    return this.http.get<Exercise[]>(`http://localhost:3000/exercises/${targetId}`);
+    return this.http.get<Exercise[]>(`${this.baseUrl}/exercises/${targetId}`);
+  }
+
+  addExercise(newExercise: Exercise) {
+    return this.http.post<Exercise>(this.baseUrl+"/addexercise", newExercise);
   }
 }

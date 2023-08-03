@@ -12,12 +12,19 @@ export class ExerciseListComponent implements OnInit {
 
 
   public exercises: Exercise[] = [];
+  public showForm: boolean = false;
 
   constructor(private exerciseService:ExerciseListService){
 
   }
   ngOnInit(){
     this.getAllExercises();
+  }
+  
+  public toggleForm(){
+    if(this.showForm){
+      this.showForm = false;
+    }else{this.showForm = true;}
   }
 
   public getAllExercises() : void{
@@ -29,5 +36,6 @@ export class ExerciseListComponent implements OnInit {
         alert(error.message);
       });
   }
+
 
 }
