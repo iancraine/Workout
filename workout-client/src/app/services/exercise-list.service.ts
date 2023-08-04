@@ -17,6 +17,9 @@ export class ExerciseListService {
   getAllExercises() : Observable<Exercise[]>{
     return this.http.get<Exercise[]>(this.baseUrl+"/exercises");
   }
+  getExerciseById(exerciseId: string) : Observable<Exercise>{
+    return this.http.get<Exercise>(`${this.baseUrl}/exercise/${exerciseId}`)
+  }
 
   // Pass targetId from click on exercises page
   getExercisesByTarget(targetId: string) : Observable<Exercise[]> {
@@ -25,5 +28,13 @@ export class ExerciseListService {
 
   addExercise(newExercise: Exercise) {
     return this.http.post<Exercise>(this.baseUrl+"/addexercise", newExercise);
+  }
+  
+  modifyExercise(newExercise: Exercise, exerciseId: string){
+    return this.http.put<Exercise>(`${this.baseUrl}/${exerciseId}`, newExercise);
+  }
+
+  deleteExercise(exerciseId: string){
+    return this.http.delete(`${this.baseUrl}/${exerciseId}`);
   }
 }

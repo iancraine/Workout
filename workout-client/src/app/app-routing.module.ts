@@ -5,13 +5,15 @@ import { HomeComponent } from './components/home/home.component';
 import { SingleTargetComponent } from './components/single-target/single-target.component';
 import { WorkoutLogComponent } from './components/workout-log/workout-log.component';
 import { StarredWorkoutListComponent } from './components/starred-workout-list/starred-workout-list.component';
+import { SingleExerciseComponent } from './components/single-exercise/single-exercise.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent}, 
   {path: 'exercises', component: ExerciseListComponent},
   {path: 'exercises/:targetId', component: SingleTargetComponent},
   {path: 'workouts', component: WorkoutLogComponent},
-  {path: 'starred', component: StarredWorkoutListComponent}
+  {path: 'starred', component: StarredWorkoutListComponent},
+  {path: 'exercise/:exerciseId', component: SingleExerciseComponent}
 ];
 
 @NgModule({

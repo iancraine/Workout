@@ -13,6 +13,7 @@ import { SingleTargetComponent } from './components/single-target/single-target.
 import { WorkoutLogComponent } from './components/workout-log/workout-log.component';
 import { StarredWorkoutListComponent } from './components/starred-workout-list/starred-workout-list.component';
 import { NewExerciseComponent } from './components/new-exercise/new-exercise.component';
+import { SingleExerciseComponent } from './components/single-exercise/single-exercise.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NewExerciseComponent } from './components/new-exercise/new-exercise.com
     SingleTargetComponent,
     WorkoutLogComponent,
     StarredWorkoutListComponent,
-    NewExerciseComponent
+    NewExerciseComponent,
+    SingleExerciseComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,8 @@ public class JdbcExerciseDao implements ExerciseDao{
         List<Exercise> results = new ArrayList<>();
 
         String sql = "SELECT exercise_id, exercise_name, exercise_desc, exercise_pic\n" +
-                "FROM exercise";
+                "FROM exercise " +
+                "ORDER BY exercise_id DESC;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
 
         while (rowSet.next()){
