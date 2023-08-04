@@ -68,7 +68,6 @@ export class SingleExerciseComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
-    // this.router.navigate(['/exercises'])
   }
 
 }

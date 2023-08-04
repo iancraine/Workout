@@ -8,12 +8,26 @@ import { Target } from '../models/target';
 })
 export class TargetListService {
 
-  constructor(private http:HttpClient) { }
+  private baseUrl!: string
+
+
+  constructor(private http:HttpClient) {
+    this.baseUrl = 'http://localhost:3000';
+   }
 
   getAllTargets() : Observable<Target[]>{
     return this.http.get<Target[]>("http://localhost:3000/groups");
   }
   getTargetById(targetId: string): Observable<Target>{
     return this.http.get<Target>(`http://localhost:3000/group/${targetId}`);
+  }
+  addTarget(newTarget: Target){
+    return this.http.post<Target>(this.baseUrl+"/addgroup", newTarget);
+  }
+  modifyTarget(newTarget: Target, targetId: string){
+    return this.http.put<Target>(`${this.baseUrl}/modify/${targetId}`, newTarget);
+  }
+  deleteTarget(targetId: string){
+    return this.http.delete(`${this.baseUrl}/remove/${targetId}`);
   }
 }

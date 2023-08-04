@@ -62,8 +62,9 @@ public class JdbcTargetDao implements TargetDao {
     @Override
     public Target modifyTarget(Target modifiedTarget, int targetId) {
         Target changedTarget;
-        String sql = "UPDATE target SET target_name = ?";
-        jdbcTemplate.update(sql, modifiedTarget.getTargetName());
+        String sql = "UPDATE target SET target_name = ?" +
+                "WHERE target_id =?";
+        jdbcTemplate.update(sql, modifiedTarget.getTargetName(), modifiedTarget.getTargetId());
 
         changedTarget = getTargetById(targetId);
         return changedTarget;

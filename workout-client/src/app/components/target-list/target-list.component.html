@@ -8,6 +8,22 @@
                 <a [routerLink]="['/exercises', item.targetId]"><h1>{{item.targetName}}</h1></a>
             </div>
         </div>
-        <div class="target-element">Add A Group</div>
+        <div class="target-element" *ngIf="!showForm" (click) = 'toggleForm()'>Add A Group</div>
+        <div class="target-element" *ngIf="showForm" (click) = 'toggleForm()'>Cancel</div>
+        <div class="target-element" *ngIf="showForm">
+            <form #targetForm = 'ngForm' (ngSubmit)="onSubmit(targetForm)">
+                <input 
+                type="text" 
+                name="targetName"  
+                placeholder="Enter a Group Name"
+                ngModel
+                #targetName = 'ngModel'
+                required
+                minlength="1"
+                >
+                <button type="submit" [disabled]="targetForm.invalid">Save</button>
+            </form>
+            
+        </div>
     </div>
 </div>
