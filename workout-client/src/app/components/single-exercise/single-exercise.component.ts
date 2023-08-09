@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
+import { Workout } from 'src/app/models/workout';
 import { ExerciseListService } from 'src/app/services/exercise-list.service';
 
 @Component({
@@ -10,7 +12,6 @@ import { ExerciseListService } from 'src/app/services/exercise-list.service';
   styleUrls: ['./single-exercise.component.css']
 })
 export class SingleExerciseComponent implements OnInit{
-
   public exercise: Exercise ={
     exerciseId: 0,
     exerciseName:'',

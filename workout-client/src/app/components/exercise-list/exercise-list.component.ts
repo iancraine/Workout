@@ -1,7 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
 import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { Exercise } from 'src/app/models/exercise';
+import { MatDialog,} from '@angular/material/dialog';
+import { NewWorkoutComponent } from '../new-workout/new-workout.component';
+import { NewWorkoutService } from 'src/app/services/new-workout.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-exercise-list',
@@ -10,15 +14,23 @@ import { Exercise } from 'src/app/models/exercise';
 })
 export class ExerciseListComponent implements OnInit {
 
-
-  public exercises: Exercise[] = [];
+  public exercises$!: Observable<Exercise[]>;
+  public workoutStart$!: Observable<boolean>;
   public showForm: boolean = false;
 
-  constructor(private exerciseService:ExerciseListService){
+
+  constructor(
+    private exerciseService:ExerciseListService, 
+    private dialogRef: MatDialog, 
+    private newWorkoutService: NewWorkoutService){
 
   }
+
   ngOnInit(){
-    this.getAllExercises();
+    this.exercises$ = this.exerciseService.getExercisesStore();
+    this.exerciseService.init();
+    this.workoutStart$ = this.newWorkoutService.getForm();    
+
   }
   
   public toggleForm(){
@@ -27,14 +39,15 @@ export class ExerciseListComponent implements OnInit {
     }else{this.showForm = true;}
   }
 
-  public getAllExercises() : void{
-    this.exerciseService.getAllExercises().subscribe(
-      (response: Exercise[]) => {
-        this.exercises = response;
-      }, 
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      });
+
+  openPopup(exerciseId: number){
+    this.dialogRef.open(NewWorkoutComponent,
+      {
+      width: '60%',
+      data: {
+        exerciseId: exerciseId
+      }}
+    );
   }
 
 

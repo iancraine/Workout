@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +18,9 @@ import { WorkoutLogComponent } from './components/workout-log/workout-log.compon
 import { StarredWorkoutListComponent } from './components/starred-workout-list/starred-workout-list.component';
 import { NewExerciseComponent } from './components/new-exercise/new-exercise.component';
 import { SingleExerciseComponent } from './components/single-exercise/single-exercise.component';
+import { NewWorkoutComponent } from './components/new-workout/new-workout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddExercisePopupComponent } from './components/add-exercise-popup/add-exercise-popup.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +33,26 @@ import { SingleExerciseComponent } from './components/single-exercise/single-exe
     WorkoutLogComponent,
     StarredWorkoutListComponent,
     NewExerciseComponent,
-    SingleExerciseComponent
+    SingleExerciseComponent,
+    NewWorkoutComponent,
+    AddExercisePopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    // Unused
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

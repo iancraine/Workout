@@ -1,22 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Exercise } from '../models/exercise';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseListService {
+  private exercises$ = new BehaviorSubject<Exercise[]>([]);
 
   private baseUrl!: string
 
   constructor(private http:HttpClient) {
     this.baseUrl = 'http://localhost:3000';
    }
+  
 
-  getAllExercises() : Observable<Exercise[]>{
-    return this.http.get<Exercise[]>(this.baseUrl+"/exercises");
+
+   //Add error checking****************************
+  public init():void{
+    this.http.get<Exercise[]>(this.baseUrl+"/exercises")
+    .subscribe((exercise) => {
+      this.exercises$.next(exercise);      
+    },
+    (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
+
+  public getExercisesStore(): Observable<Exercise[]>{
+    return this.exercises$;
+  }
+
+
   getExerciseById(exerciseId: string) : Observable<Exercise>{
     return this.http.get<Exercise>(`${this.baseUrl}/exercise/${exerciseId}`)
   }

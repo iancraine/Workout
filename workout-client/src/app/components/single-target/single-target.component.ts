@@ -1,10 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
 import { Target } from 'src/app/models/target';
 import { ExerciseListService } from 'src/app/services/exercise-list.service';
+import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { TargetListService } from 'src/app/services/target-list.service';
+import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 
 @Component({
   selector: 'app-single-target',
@@ -20,6 +24,7 @@ export class SingleTargetComponent implements OnInit{
     targetId: 0,
     targetName: ''
   };
+  public workoutStart$!: Observable<boolean>;
 
 
   constructor(
@@ -27,6 +32,8 @@ export class SingleTargetComponent implements OnInit{
     private route: ActivatedRoute, 
     private targetService:TargetListService,
     private router: Router,
+    private newWorkoutService: NewWorkoutService,
+    private dialogRef: MatDialog, 
     ){
 
   }
@@ -38,6 +45,8 @@ export class SingleTargetComponent implements OnInit{
     // Run methods
     this.getTargetById();
     this.getExercisesByTarget();
+    this.workoutStart$ = this.newWorkoutService.getForm();    
+
 
   }
 
@@ -59,6 +68,16 @@ export class SingleTargetComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+
+  openPopup(exerciseId: number){
+    this.dialogRef.open(NewWorkoutComponent,
+      {
+      width: '60%',
+      data: {
+        exerciseId: exerciseId
+      }}
+    );
   }
 
   public toggleForm(){

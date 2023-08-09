@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{exerciseId}}</h1>
+
+<div mat-dialog-content *ngIf="!(workoutStart$|async)">
+    <input type="text" placeholder="Workout Name">
+</div>
+
+<div mat-dialog-content *ngIf="workoutStart$|async">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Exercise</th>
+                <th>Sets</th>
+                <th>Reps/Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let exercise of currentWorkout">
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td><button>Add Workout</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div mat-dialog-actions>
+    <button *ngIf="!(workoutStart$|async)" (click)="startWorkout()">Start Workout</button>
+    <button (click)="closePopup()">Close</button>
+    <button *ngIf="workoutStart$|async" (click)="finishWorkout()">Finish Workout</button>
+</div>
+

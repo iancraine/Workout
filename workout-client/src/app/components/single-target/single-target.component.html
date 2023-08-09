@@ -24,6 +24,8 @@
                     <div class="image">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU" alt="" class="exercise-pic">
                     </div>
+                    <button class="ri-add-line" *ngIf="workoutStart$|async" (click)="openPopup(item.exerciseId)"></button>
+
 
                     <div class="description">
                         <h5 class="description">Description: </h5>
