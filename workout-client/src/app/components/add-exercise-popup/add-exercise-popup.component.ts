@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 
 @Component({
   selector: 'app-add-exercise-popup',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-exercise-popup.component.css']
 })
 export class AddExercisePopupComponent {
+
+  constructor(
+    private ref: MatDialogRef<NewWorkoutComponent>,
+    @Inject(MAT_DIALOG_DATA)public data:any,
+
+    ){
+
+  }
 
 }

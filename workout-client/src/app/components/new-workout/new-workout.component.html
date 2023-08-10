@@ -1,8 +1,59 @@
-<h1 mat-dialog-title>{{exerciseId}}</h1>
+<!-- <h1 mat-dialog-title>{{exerciseId}}</h1> -->
 
-<div mat-dialog-content *ngIf="!(workoutStart$|async)">
-    <input type="text" placeholder="Workout Name">
+<div mat-dialog-content *ngIf="workoutStart$|async">
+    <form #exerciseForm = 'ngForm' (ngSubmit)="submitExercise(exerciseForm)">
+
+        <label for="exerciseId">Exercise: </label>
+        <select 
+        name="exerciseId" 
+        ngModel
+        #exerciseId ='ngModel'
+        required>
+            <option selected="selected" value="">None</option>
+            <option *ngFor="let exercise of exercises$|async" [ngValue]="exercise.exerciseId">{{exercise.exerciseName}}</option>
+        </select>
+
+        <label for="">Sets: </label>
+        <input 
+        type="number" 
+        placeholder="Enter Sets" 
+        name="setsCompleted"
+        ngModel
+        #setsCompleted = 'ngModel'
+        required>
+        
+        <label for="">Reps/Time: </label>
+        <input type="text" placeholder="Enter a Value" name="repsTime" ngModel #repsTime ='ngModel'>
+        <button type="submit" [disabled]="exerciseForm.invalid">Add Exercise</button>
+    </form>
+
+
+    <!-- <label for="exercises">Exercise: </label>
+    <select name="exercises">
+        <option selected = "selected"></option>
+        <option *ngFor="let exercise of exercises$|async">{{exercise.exerciseName}}</option>
+    </select>
+    <label for="">Repetitions: </label>
+    <input type="text" placeholder="Enter Reps">
+    <label for="">Sets/Time: </label>
+    <input type="text" placeholder="Enter a Value">
+    <button>Add Exercise</button> -->
+
 </div>
+
+
+<!-- Look into mat form again -->
+<!-- <form> -->
+    <div mat-dialog-content *ngIf="!(workoutStart$|async)">
+        <input type="text" placeholder="Enter A Workout Name" [(ngModel)]="workout.workoutName">
+        <textarea cols="30" rows="10" placeholder="Enter a Workout Notes" [(ngModel)]="workout.workoutNote"></textarea>
+    </div>
+    <div mat-dialog-actions>
+        <button *ngIf="!(workoutStart$|async)" (click)="startWorkout()">Start Workout</button>
+
+    </div>
+<!-- </form> -->
+
 
 <div mat-dialog-content *ngIf="workoutStart$|async">
 
@@ -16,17 +67,16 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let exercise of currentWorkout">
+            <tr *ngFor="let exercise of currentWorkout$ | async">
+                <td>{{exercise.exerciseId}}</td>
                 <td>data</td>
                 <td>data</td>
-                <td>data</td>
-                <td><button>Add Workout</button></td>
+                <td *ngIf="this.data?.exerciseId"><button>Add Workout</button></td>
             </tr>
         </tbody>
     </table>
 </div>
 <div mat-dialog-actions>
-    <button *ngIf="!(workoutStart$|async)" (click)="startWorkout()">Start Workout</button>
     <button (click)="closePopup()">Close</button>
     <button *ngIf="workoutStart$|async" (click)="finishWorkout()">Finish Workout</button>
 </div>

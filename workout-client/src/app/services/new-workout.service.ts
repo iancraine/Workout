@@ -6,33 +6,44 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NewWorkoutService {
-  private workout$ = new BehaviorSubject<Workout>({
-    workoutId: 0,
-    workoutName: '',
-    workoutDate: new Date,
-    workoutNote: '',
-    exerciseId: 0,
-    setsCompleted: 0,
-    repsTime: '',
-    favorite: false
-  });
+  private workout$ = new BehaviorSubject<Workout[]>([]);
   private workoutStart$ = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
-  addExercise(exercise :Workout){
-    this.workout$.next(exercise);
-    // HTTP Put into target_exercise
+  public addWorkout(newWorkout: Workout){
+
+    //Find out why its not skipping after first exericse
+    if((this.workout$.value.at(0)?.exerciseId) == 0){
+      console.log(this.workout$.value.at(0)?.exerciseId);
+      
+      let currentValue = this.workout$.value;
+      currentValue.at(0)?.exerciseId == newWorkout.exerciseId;
+      currentValue.at(0)?.repsTime == newWorkout.repsTime;
+      currentValue.at(0)?.setsCompleted == newWorkout.setsCompleted;
+      // console.log(currentValue);
+      this.workout$.next(currentValue);
+
+    }else{
+    let currentValue = this.workout$.value;
+    let updatedValue = [...currentValue, newWorkout];
+    this.workout$.next(updatedValue);
+    }
+
+    // console.log(this.workout$);
+ 
   }
-  public getWorkout(): Observable<Workout>{
+
+  public getWorkout(): Observable<Workout[]>{
     return this.workout$
   }
 
   public getForm(): Observable<boolean>{
     return this.workoutStart$;
   }
-  public startWorkout():void{
+  public startWorkout(workoutInfo: Workout):void{
     this.workoutStart$.next(true);
+    this.addWorkout(workoutInfo);
   }
   public finishWorkout():void{
     this.workoutStart$.next(false);

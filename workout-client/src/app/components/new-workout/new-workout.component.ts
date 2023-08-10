@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit,} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Exercise } from 'src/app/models/exercise';
 import { Workout } from 'src/app/models/workout';
+import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
 
 
@@ -13,6 +14,7 @@ import { NewWorkoutService } from 'src/app/services/new-workout.service';
   styleUrls: ['./new-workout.component.css']
 })
 export class NewWorkoutComponent implements OnInit {
+
   workout: Workout = {
     workoutId: 0,
     workoutName: '',
@@ -23,28 +25,35 @@ export class NewWorkoutComponent implements OnInit {
     repsTime: '',
     favorite: false
   };
-  public currentWorkout: Workout[] = [];
+
+  //Get after workout started
+  public currentWorkout$!: Observable<Workout[]>;
   //Get with exerciseId
   public selectedExercise!: Workout;
   //Data from clicked exercise
-  exerciseId:number = 0;
+  // exerciseId:number = 0;
   //Check if Workout is started
   public workoutStart$!: Observable<boolean>;
+  public exercises$!: Observable<Exercise[]>;
+
 
   constructor(
     private ref: MatDialogRef<NewWorkoutComponent>,
     private newWorkoutService: NewWorkoutService,
     @Inject(MAT_DIALOG_DATA)public data:any,
-    private router: Router,
+    private exerciseService:ExerciseListService, 
+
     ){
 
   }
   ngOnInit(): void {
     if(this.data != null){
-      this.exerciseId = this.data.exerciseId;
+      // this.exerciseId = this.data.exerciseId;
     }
     this.workoutStart$ = this.newWorkoutService.getForm();
-    console.log(this.workoutStart$);
+    this.currentWorkout$ = this.newWorkoutService.getWorkout();
+    this.exercises$ = this.exerciseService.getExercisesStore();
+
   }
 
   closePopup(){
@@ -52,11 +61,18 @@ export class NewWorkoutComponent implements OnInit {
   }
 
   startWorkout(){
-    this.newWorkoutService.startWorkout();
+    this.newWorkoutService.startWorkout(this.workout);
   }
 
   finishWorkout(){
     this.newWorkoutService.finishWorkout();
+  }
+
+  submitExercise(exerciseForm: NgForm){
+    this.workout.exerciseId = exerciseForm.value.exerciseId;
+    this.workout.setsCompleted = exerciseForm.value.setsCompleted;
+    this.workout.repsTime = exerciseForm.value.repsTime;
+    this.newWorkoutService.addWorkout(this.workout);
   }
 
 
