@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Workout } from '../models/workout';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, toArray } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,30 +9,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class NewWorkoutService {
   private workout$ = new BehaviorSubject<Workout[]>([]);
   private workoutStart$ = new BehaviorSubject<boolean>(false);
+  private baseUrl!: string
 
-  constructor() { }
+
+
+  constructor(private http:HttpClient) {
+    this.baseUrl = 'http://localhost:3000';
+   }
 
   public addWorkout(newWorkout: Workout){
-
-    //Find out why its not skipping after first exericse
-    if((this.workout$.value.at(0)?.exerciseId) == 0){
-      console.log(this.workout$.value.at(0)?.exerciseId);
-      
-      let currentValue = this.workout$.value;
-      currentValue.at(0)?.exerciseId == newWorkout.exerciseId;
-      currentValue.at(0)?.repsTime == newWorkout.repsTime;
-      currentValue.at(0)?.setsCompleted == newWorkout.setsCompleted;
-      // console.log(currentValue);
-      this.workout$.next(currentValue);
-
-    }else{
-    let currentValue = this.workout$.value;
-    let updatedValue = [...currentValue, newWorkout];
-    this.workout$.next(updatedValue);
-    }
-
-    // console.log(this.workout$);
- 
+    this.workout$.next(this.workout$.value.concat(newWorkout)); 
   }
 
   public getWorkout(): Observable<Workout[]>{
@@ -41,11 +28,17 @@ export class NewWorkoutService {
   public getForm(): Observable<boolean>{
     return this.workoutStart$;
   }
-  public startWorkout(workoutInfo: Workout):void{
+  public startWorkout():void{
     this.workoutStart$.next(true);
-    this.addWorkout(workoutInfo);
   }
-  public finishWorkout():void{
-    this.workoutStart$.next(false);
+
+
+  //Not posting*********************************
+  public finishWorkout(){
+    // this.workoutStart$.next(false);
+    let newWorkout = this.workout$.value;
+    let h = new HttpHeaders({'Content-Type':'application/json'})
+    return this.http.post<Workout[]>(this.baseUrl+"/addworkout", newWorkout, {headers: h});
+
   }
 }

@@ -28,17 +28,6 @@
     </form>
 
 
-    <!-- <label for="exercises">Exercise: </label>
-    <select name="exercises">
-        <option selected = "selected"></option>
-        <option *ngFor="let exercise of exercises$|async">{{exercise.exerciseName}}</option>
-    </select>
-    <label for="">Repetitions: </label>
-    <input type="text" placeholder="Enter Reps">
-    <label for="">Sets/Time: </label>
-    <input type="text" placeholder="Enter a Value">
-    <button>Add Exercise</button> -->
-
 </div>
 
 
@@ -69,8 +58,8 @@
         <tbody>
             <tr *ngFor="let exercise of currentWorkout$ | async">
                 <td>{{exercise.exerciseId}}</td>
-                <td>data</td>
-                <td>data</td>
+                <td>{{exercise.setsCompleted}}</td>
+                <td>{{exercise.workoutName}}</td>
                 <td *ngIf="this.data?.exerciseId"><button>Add Workout</button></td>
             </tr>
         </tbody>

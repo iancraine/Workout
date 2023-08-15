@@ -61,7 +61,7 @@ export class NewWorkoutComponent implements OnInit {
   }
 
   startWorkout(){
-    this.newWorkoutService.startWorkout(this.workout);
+    this.newWorkoutService.startWorkout();
   }
 
   finishWorkout(){
@@ -72,7 +72,7 @@ export class NewWorkoutComponent implements OnInit {
     this.workout.exerciseId = exerciseForm.value.exerciseId;
     this.workout.setsCompleted = exerciseForm.value.setsCompleted;
     this.workout.repsTime = exerciseForm.value.repsTime;
-    this.newWorkoutService.addWorkout(this.workout);
+    this.newWorkoutService.addWorkout(Object.assign({},this.workout));
   }
 
 
