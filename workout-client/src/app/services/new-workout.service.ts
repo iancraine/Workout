@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Workout } from '../models/workout';
 import { BehaviorSubject, Observable, toArray } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +35,13 @@ export class NewWorkoutService {
 
   //Not posting*********************************
   public finishWorkout(){
-    // this.workoutStart$.next(false);
     let newWorkout = this.workout$.value;
-    let h = new HttpHeaders({'Content-Type':'application/json'})
-    return this.http.post<Workout[]>(this.baseUrl+"/addworkout", newWorkout, {headers: h});
-
+    return this.http.post<Array<Workout>>(this.baseUrl+"/addworkout", newWorkout).subscribe(
+      () => {
+        this.workoutStart$.next(false);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
 }
