@@ -32,8 +32,6 @@ export class NewWorkoutService {
     this.workoutStart$.next(true);
   }
 
-
-  //Not posting*********************************
   public finishWorkout(){
     let newWorkout = this.workout$.value;
     return this.http.post<Array<Workout>>(this.baseUrl+"/addworkout", newWorkout).subscribe(

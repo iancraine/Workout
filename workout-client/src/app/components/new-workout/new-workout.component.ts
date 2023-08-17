@@ -28,10 +28,10 @@ export class NewWorkoutComponent implements OnInit {
 
   //Get after workout started
   public currentWorkout$!: Observable<Workout[]>;
-  //Get with exerciseId
+  //Get with exerciseId*************************************
   public selectedExercise!: Workout;
   //Data from clicked exercise
-  // exerciseId:number = 0;
+  exerciseId:number = 0;
   //Check if Workout is started
   public workoutStart$!: Observable<boolean>;
   public exercises$!: Observable<Exercise[]>;
@@ -48,7 +48,8 @@ export class NewWorkoutComponent implements OnInit {
   }
   ngOnInit(): void {
     if(this.data != null){
-      // this.exerciseId = this.data.exerciseId;
+      this.exerciseId = this.data.exerciseId;
+
     }
     this.workoutStart$ = this.newWorkoutService.getForm();
     this.currentWorkout$ = this.newWorkoutService.getWorkout();
@@ -69,7 +70,12 @@ export class NewWorkoutComponent implements OnInit {
   }
 
   submitExercise(exerciseForm: NgForm){
-    this.workout.exerciseId = exerciseForm.value.exerciseId;
+    if(exerciseForm.value.exerciseId){
+      this.workout.exerciseId = exerciseForm.value.exerciseId;
+    }
+    else{
+      this.workout.exerciseId = this.exerciseId;
+    }
     this.workout.setsCompleted = exerciseForm.value.setsCompleted;
     this.workout.repsTime = exerciseForm.value.repsTime;
     this.newWorkoutService.addWorkout(Object.assign({},this.workout));

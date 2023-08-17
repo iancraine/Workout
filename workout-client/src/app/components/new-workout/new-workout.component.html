@@ -1,6 +1,28 @@
-<!-- <h1 mat-dialog-title>{{exerciseId}}</h1> -->
+<h1 mat-dialog-title>Add a Workout</h1>
 
-<div mat-dialog-content *ngIf="workoutStart$|async">
+<div mat-dialog-content *ngIf="(workoutStart$|async) && exerciseId > 0">
+    <form #exerciseFormFilled = 'ngForm' (ngSubmit)="submitExercise(exerciseFormFilled)">
+
+        <!-- Add method to get exercise name -->
+        <h1 for="exerciseId">Exercise: {{exerciseId}}</h1>
+
+        <label for="">Sets: </label>
+        <input 
+        type="number" 
+        placeholder="Enter Sets" 
+        name="setsCompleted"
+        ngModel
+        #setsCompleted = 'ngModel'
+        required>
+        
+        <label for="">Reps/Time: </label>
+        <input type="text" placeholder="Enter a Value" name="repsTime" ngModel #repsTime ='ngModel'>
+        <button type="submit" [disabled]="exerciseFormFilled.invalid">Add Exercise</button>
+    </form>
+</div>
+
+
+<div mat-dialog-content *ngIf="(workoutStart$|async) && exerciseId == 0">
     <form #exerciseForm = 'ngForm' (ngSubmit)="submitExercise(exerciseForm)">
 
         <label for="exerciseId">Exercise: </label>
