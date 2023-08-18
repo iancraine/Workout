@@ -5,7 +5,7 @@
 
     <div class="details-background">
         <div class="elements-container">
-            <div *ngFor="let day of workouts" class="card"> 
+            <div *ngFor="let day of workouts" class="card" (click)="openDialog(day[0].workoutId)"> 
                 <div class="element">
                     <h1>{{day[0].workoutName}}</h1>
 

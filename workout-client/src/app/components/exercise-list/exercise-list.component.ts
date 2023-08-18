@@ -28,7 +28,7 @@ export class ExerciseListComponent implements OnInit {
 
   ngOnInit(){
     this.exercises$ = this.exerciseService.getExercisesStore();
-    this.exerciseService.init();
+    // this.exerciseService.init();
     this.workoutStart$ = this.newWorkoutService.getForm();    
 
   }

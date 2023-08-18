@@ -8,6 +8,8 @@ public interface ExerciseDao {
     List<Exercise> getAllExercises();
     Exercise getExerciseById(int exerciseId);
 
+    String getExerciseNameById(int exerciseId);
+
     Exercise addNewExercise(Exercise newExercise);
 
     Exercise modifyExercise(Exercise modifiedExercise, int exerciseId);

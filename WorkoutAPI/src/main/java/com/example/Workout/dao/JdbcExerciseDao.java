@@ -46,6 +46,16 @@ public class JdbcExerciseDao implements ExerciseDao{
         return exercise;
     }
 
+    //todo might remove **************************
+    @Override
+    public String getExerciseNameById(int exerciseId) {
+        String name = "";
+        String sql = "SELECT exercise_name,\n" +
+                "FROM exercise \"+\n" +
+                "WHERE exercise_id = ?;\";";
+        return null;
+    }
+
     @Override
     public Exercise addNewExercise(Exercise newExercise) {
         Exercise addedExercise;

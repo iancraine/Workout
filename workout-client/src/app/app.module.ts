@@ -20,7 +20,7 @@ import { NewExerciseComponent } from './components/new-exercise/new-exercise.com
 import { SingleExerciseComponent } from './components/single-exercise/single-exercise.component';
 import { NewWorkoutComponent } from './components/new-workout/new-workout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddExercisePopupComponent } from './components/add-exercise-popup/add-exercise-popup.component';
+import { SingleWorkoutPopupComponent } from './components/single-workout-popup/single-workout-popup.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { AddExercisePopupComponent } from './components/add-exercise-popup/add-e
     NewExerciseComponent,
     SingleExerciseComponent,
     NewWorkoutComponent,
-    AddExercisePopupComponent
+    SingleWorkoutPopupComponent,
   ],
   imports: [
     BrowserModule,

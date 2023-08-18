@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Workout } from 'src/app/models/workout';
 import { WorkoutService } from 'src/app/services/workout.service';
+import { SingleWorkoutPopupComponent } from '../single-workout-popup/single-workout-popup.component';
 
 @Component({
   selector: 'app-workout-log',
@@ -11,7 +13,7 @@ import { WorkoutService } from 'src/app/services/workout.service';
 export class WorkoutLogComponent implements OnInit{
   public workouts: Array<Array<Workout>> = [];
 
-  constructor(private workoutService: WorkoutService){
+  constructor(private workoutService: WorkoutService, private dialogRef: MatDialog){
 
   }
   ngOnInit(){
@@ -27,6 +29,16 @@ export class WorkoutLogComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+
+  openDialog(workoutId: number){
+    this.dialogRef.open(SingleWorkoutPopupComponent,
+      {
+      width: '60%',
+      data: {
+        workoutId: workoutId
+      }}
+    );
   }
 
 }

@@ -7,14 +7,24 @@ import { Workout } from '../models/workout';
   providedIn: 'root'
 })
 export class WorkoutService {
+  private baseUrl!: string
 
-  constructor(private http:HttpClient) { }
+
+  constructor(private http:HttpClient) { 
+    this.baseUrl = 'http://localhost:3000';
+  }
 
   getAllWorkouts() : Observable<Array<Array<Workout>>>{
-    return this.http.get<Array<Array<Workout>>>("http://localhost:3000/workouts");
+    return this.http.get<Array<Array<Workout>>>(this.baseUrl + "/workouts");
   }
 
   getStarredWorkouts() : Observable<Array<Array<Workout>>>{
-    return this.http.get<Array<Array<Workout>>>("http://localhost:3000/starred");
+    return this.http.get<Array<Array<Workout>>>(this.baseUrl + "/starred");
+  }
+
+
+  //look into forkjoin to add exercise name
+  getWorkoutById(workoutId: string) : Observable<Array<Workout>>{
+    return this.http.get<Array<Workout>>(`${this.baseUrl}/workout/${workoutId}`)
   }
 }
