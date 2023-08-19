@@ -12,6 +12,8 @@ public class Workout {
     private int exerciseId;
     private int setsCompleted;
     private String repsTime;
+    private  String exerciseName;
+    private int workoutExerciseId;
 
     public Workout() {
     }
@@ -24,7 +26,8 @@ public class Workout {
         this.isFavorite = isFavorite;
     }
 
-    public Workout(int workoutId, String workoutName, String workoutNote, LocalDate workoutDate, boolean isFavorite, int exerciseId, int setsCompleted, String repsTime) {
+    public Workout(int workoutId, String workoutName, String workoutNote, LocalDate workoutDate, boolean isFavorite,
+                   int exerciseId, int setsCompleted, String repsTime, String exerciseName) {
         this.workoutId = workoutId;
         this.workoutName = workoutName;
         this.workoutNote = workoutNote;
@@ -33,6 +36,7 @@ public class Workout {
         this.exerciseId = exerciseId;
         this.setsCompleted = setsCompleted;
         this.repsTime = repsTime;
+        this.exerciseName = exerciseName;
     }
 
     public int getWorkoutId() {
@@ -97,5 +101,21 @@ public class Workout {
 
     public void setRepsTime(String repsTime) {
         this.repsTime = repsTime;
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
+    }
+
+    public int getWorkoutExerciseId() {
+        return workoutExerciseId;
+    }
+
+    public void setWorkoutExerciseId(int workoutExerciseId) {
+        this.workoutExerciseId = workoutExerciseId;
     }
 }

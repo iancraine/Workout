@@ -12,6 +12,7 @@
             </div>
             
             <div class="button-container">
+                <button class="ri-add-line" *ngIf="workoutStart$|async" type="button" (click)="openPopup(exercise.exerciseId, exercise.exerciseName)"></button>
                 <button *ngIf="!edit" (click)="toggleForm()" class="addNewExercise">Edit</button>
                 <button *ngIf="edit" (click)="toggleForm()" class="addNewExercise">Cancel</button>
             

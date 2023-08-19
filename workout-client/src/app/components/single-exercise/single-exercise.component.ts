@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
 import { Workout } from 'src/app/models/workout';
 import { ExerciseListService } from 'src/app/services/exercise-list.service';
+import { NewWorkoutService } from 'src/app/services/new-workout.service';
+import { NewWorkoutComponent } from '../new-workout/new-workout.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-single-exercise',
@@ -18,12 +21,16 @@ export class SingleExerciseComponent implements OnInit{
     exerciseDesc:'',
     exercisePic: ''
   };
+  public workoutStart$!: Observable<boolean>;
   public edit: boolean = false;
 
   constructor(
     private exerciseService: ExerciseListService,
     private route: ActivatedRoute,
     private router: Router,
+    private newWorkoutService: NewWorkoutService,
+    private dialogRef: MatDialog, 
+
     ){}
 
   ngOnInit(){    
@@ -32,6 +39,8 @@ export class SingleExerciseComponent implements OnInit{
     })
 
     this.getExercise();
+    this.workoutStart$ = this.newWorkoutService.getForm();    
+
     
   }
   getExercise() : void{
@@ -69,6 +78,17 @@ export class SingleExerciseComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+
+  openPopup(exerciseId: number, exerciseName: string){
+    this.dialogRef.open(NewWorkoutComponent,
+      {
+      width: '60%',
+      data: {
+        exerciseId: exerciseId,
+        exerciseName: exerciseName,
+      }}
+    );
   }
 
 }

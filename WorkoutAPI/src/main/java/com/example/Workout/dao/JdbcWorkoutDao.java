@@ -19,18 +19,12 @@ public class JdbcWorkoutDao implements WorkoutDao{
     public List<List<Workout>> getAllWorkouts() {
         List<Workout> workouts = new ArrayList<>();
 
-//        String sql = "SELECT w.workout_id, w.workout_name, w.workout_note, \n" +
-//                "w.workout_date, w.favorite, \n" +
-//                "we.exercise_id, we.sets_completed, we.reps_time \n" +
-//                "FROM workout w \n" +
-//                "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
-//                "ORDER BY w.workout_id;";
-
-        String sql ="SELECT w.workout_id, w.workout_name, w.workout_note, w.workout_date, w.favorite, \n" +
-                "we.exercise_id, we.sets_completed, we.reps_time \n" +
-                "FROM workout w \n" +
+        String sql ="SELECT w.workout_id, w.workout_name, w.workout_note, w.workout_date, w.favorite,\n" +
+                "we.exercise_id, we.sets_completed, we.reps_time, e.exercise_name, we.workout_exercise_id\n" +
+                "FROM workout w\n" +
                 "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
-                "ORDER BY w.workout_date DESC,  w.workout_id;";
+                "JOIN exercise e ON e.exercise_id = we.exercise_id\n" +
+                "ORDER BY w.workout_date DESC, we.workout_exercise_id;";
 
         SqlRowSet row =jdbcTemplate.queryForRowSet(sql);
 
@@ -62,11 +56,12 @@ public class JdbcWorkoutDao implements WorkoutDao{
         List<Workout> workouts = new ArrayList<>();
 
         String sql ="SELECT w.workout_id, w.workout_name, w.workout_note, w.workout_date, w.favorite, \n" +
-                "we.exercise_id, we.sets_completed, we.reps_time \n" +
+                "we.exercise_id, we.sets_completed, we.reps_time, e.exercise_name, we.workout_exercise_id \n" +
                 "FROM workout w \n" +
                 "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
+                "JOIN exercise e ON e.exercise_id = we.exercise_id\n" +
                 "WHERE w.favorite = true\n" +
-                "ORDER BY w.workout_date DESC;";
+                "ORDER BY w.workout_date DESC, we.workout_exercise_id;";
 
         SqlRowSet row =jdbcTemplate.queryForRowSet(sql);
 
@@ -96,12 +91,14 @@ public class JdbcWorkoutDao implements WorkoutDao{
     @Override
     public List<Workout> getWorkoutById(int workoutId) {
         List<Workout> workouts = new ArrayList<>();
-        String sql = "SELECT w.workout_id, w.workout_name, w.workout_note, \n" +
-                "w.workout_date, w.favorite, \n" +
-                "we.exercise_id, we.sets_completed, we.reps_time \n" +
-                "FROM workout w \n" +
-                "JOIN workout_exercise we ON we.workout_id = w.workout_id \n" +
-                "WHERE w.workout_id = ?;";
+        String sql = "SELECT w.workout_id, w.workout_name, w.workout_note,\n" +
+                "w.workout_date, w.favorite,\n" +
+                "we.exercise_id, we.sets_completed, we.reps_time, e.exercise_name, we.workout_exercise_id\n" +
+                "FROM workout w\n" +
+                "JOIN workout_exercise we ON we.workout_id = w.workout_id\n" +
+                "JOIN exercise e ON e.exercise_id = we.exercise_id\n" +
+                "WHERE w.workout_id = ?\n" +
+                "ORDER BY workout_exercise_id;";
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, workoutId);
         while (row.next()){
             workouts.add(mapRowToWorkout(row));
@@ -177,6 +174,8 @@ public class JdbcWorkoutDao implements WorkoutDao{
         result.setExerciseId(rowSet.getInt("exercise_id"));
         result.setSetsCompleted(rowSet.getInt("sets_completed"));
         result.setRepsTime(rowSet.getString("reps_time"));
+        result.setExerciseName(rowSet.getString("exercise_name"));
+        result.setWorkoutExerciseId(rowSet.getInt("workout_exercise_id"));
 
         return result;
     }

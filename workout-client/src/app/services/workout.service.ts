@@ -22,9 +22,15 @@ export class WorkoutService {
     return this.http.get<Array<Array<Workout>>>(this.baseUrl + "/starred");
   }
 
-
-  //look into forkjoin to add exercise name
   getWorkoutById(workoutId: string) : Observable<Array<Workout>>{
     return this.http.get<Array<Workout>>(`${this.baseUrl}/workout/${workoutId}`)
+  }
+
+  deleteWorkout(workoutId: string){
+    return this.http.delete(`${this.baseUrl}/delete/${workoutId}`);
+  }
+
+  modifyWorkout(workoutId: string, newWorkout: Array<Workout>){
+    return this.http.put(`${this.baseUrl}/edit/${workoutId}`, newWorkout);
   }
 }

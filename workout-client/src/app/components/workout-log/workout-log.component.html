@@ -5,14 +5,18 @@
 
     <div class="details-background">
         <div class="elements-container">
-            <div *ngFor="let day of workouts" class="card" (click)="openDialog(day[0].workoutId)"> 
+            <div *ngFor="let workout of workouts" class="card" > 
                 <div class="element">
-                    <h1>{{day[0].workoutName}}</h1>
+                    <h1 (click)="openDialog(workout[0].workoutId)">{{workout[0].workoutName}}</h1>
 
                     <div class="element-description">
                         <h5>Date: </h5>
-                        <p class="description-box">{{day[0].workoutDate}}</p>
+                        <p class="description-box">{{workout[0].workoutDate}}</p>
                     </div>
+
+                    <i class="ri-heart-add-fill" *ngIf="!workout[0].favorite" (click)="toggleFavorite(workout)">Favorite</i>
+                    <i class="ri-heart-add-fill" *ngIf="workout[0].favorite" (click)="toggleFavorite(workout)">Unfavorite</i>
+
                 </div>
             </div>
         </div>

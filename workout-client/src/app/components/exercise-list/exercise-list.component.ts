@@ -40,12 +40,13 @@ export class ExerciseListComponent implements OnInit {
   }
 
 
-  openPopup(exerciseId: number){
+  openPopup(exerciseId: number, exerciseName: string){
     this.dialogRef.open(NewWorkoutComponent,
       {
       width: '60%',
       data: {
-        exerciseId: exerciseId
+        exerciseId: exerciseId,
+        exerciseName: exerciseName,
       }}
     );
   }

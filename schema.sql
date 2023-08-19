@@ -26,12 +26,13 @@ CREATE TABLE target(
 	CONSTRAINT PK_group PRIMARY KEY (target_id)
 );
 CREATE TABLE workout_exercise (
+	workout_exercise_id serial,
 	workout_id int NOT NULL,
 	exercise_id int NOT NULL,
 	sets_completed int NOT NULL,
 	reps_time varchar(20) NULL,
 	
-	CONSTRAINT PK_workout_exercise PRIMARY KEY (workout_id, exercise_id),
+	CONSTRAINT PK_workout_exercise PRIMARY KEY (workout_exercise_id),
 	CONSTRAINT FK_workout_exercise_workout_id FOREIGN KEY (workout_id) REFERENCES workout(workout_id),
 	CONSTRAINT FK_workout_exercise_exercise_id FOREIGN KEY (exercise_id) REFERENCES exercise(exercise_id)
 );

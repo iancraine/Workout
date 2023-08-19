@@ -6,5 +6,7 @@ export interface Workout{
     exerciseId: number,
     setsCompleted: number,
     repsTime: string,
-    favorite: boolean
+    favorite: boolean,
+    exerciseName: string,
+    workoutExerciseId: number,
 }

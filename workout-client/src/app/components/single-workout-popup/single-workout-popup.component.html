@@ -1,4 +1,14 @@
-<h1 mat-dialog-title>{{workout[0].workoutName}}</h1>
+<div mat-dialog-title>
+    <h1 *ngIf="!edit">{{workout[0].workoutName}}</h1>
+    <h1 *ngIf="edit"><input type="text" [(ngModel)]="workout[0].workoutName"></h1>
+    <button *ngIf="edit" class="ri-delete-bin-fill" (click)="deleteWorkout()"></button>
+    <label for="favorite" *ngIf="edit">Favorite</label>
+    <input type="checkbox" id="favorite" *ngIf="edit" [(ngModel)]="workout[0].favorite">
+
+    <p *ngIf="!edit">{{workout[0].workoutNote}}</p>
+    <textarea [(ngModel)]="workout[0].workoutNote" *ngIf="edit"></textarea>
+</div>
+
 
 <div mat-dialog-content>
 
@@ -13,7 +23,7 @@
 
         <tbody>
             <tr *ngFor="let exercise of workout">
-                <td>{{getExerciseName(exercise.exerciseId)}}</td>
+                <td>{{exercise.exerciseName}}</td>
                 <td>{{exercise.setsCompleted}}</td>
                 <td>{{exercise.repsTime}}</td>
             </tr>
@@ -22,5 +32,10 @@
 </div>
 
 <div mat-dialog-actions>
-    <button (click)="closePopup()">Close</button>
+    <button (click)="closePopup()" *ngIf="!edit">Close</button>
+    <button (click)="toggleForm()" *ngIf="edit">Cancel</button>
+    <button (click)="toggleForm()" *ngIf="!edit">Edit</button>
+    <button (click)="saveWorkout()" *ngIf="edit">Save</button>
+
+
 </div>

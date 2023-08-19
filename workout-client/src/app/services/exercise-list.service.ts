@@ -32,6 +32,10 @@ export class ExerciseListService {
     return this.exercises$;
   }
 
+  mapToExercise(){
+    this.exercises$.pipe
+  }
+
 
   getExerciseById(exerciseId: string) : Observable<Exercise>{
     return this.http.get<Exercise>(`${this.baseUrl}/exercise/${exerciseId}`)

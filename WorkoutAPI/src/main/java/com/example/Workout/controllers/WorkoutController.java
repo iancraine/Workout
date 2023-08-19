@@ -33,7 +33,6 @@ public class WorkoutController {
     public List<Workout> addWorkout(@RequestBody List<Workout> newWorkout){
         return this.workoutDao.addNewWorkout(newWorkout);
     }
-//TODO not working
     @RequestMapping(path = "/edit/{workoutId}", method = RequestMethod.PUT)
     public List<Workout> modifyWorkout(@PathVariable int workoutId, @RequestBody List<Workout> workouts){
         return this.workoutDao.modifyWorkout(workouts);
