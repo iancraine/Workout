@@ -5,17 +5,18 @@
 
         <h1 for="exerciseId">Exercise: {{exerciseName}}</h1>
 
-        <label for="">Sets: </label>
+        <label for="setsCompleted">Sets: </label>
         <input 
         type="number" 
         placeholder="Enter Sets" 
         name="setsCompleted"
+        id="setsCompleted"
         ngModel
         #setsCompleted = 'ngModel'
         required>
         
-        <label for="">Reps/Time: </label>
-        <input type="text" placeholder="Enter a Value" name="repsTime" ngModel #repsTime ='ngModel'>
+        <label for="repsTime">Reps/Time: </label>
+        <input type="text" placeholder="Enter a Value" name="repsTime" id="repsTime" ngModel #repsTime ='ngModel'>
         <button type="submit" [disabled]="exerciseFormFilled.invalid">Add Exercise</button>
     </form>
 </div>
@@ -58,7 +59,7 @@
 <!-- Look into mat form again -->
 <!-- <form> -->
     <div mat-dialog-content *ngIf="!(workoutStart$|async)">
-        <input type="text" placeholder="Enter A Workout Name" [(ngModel)]="workout.workoutName">
+        <input type="text" placeholder="Enter A Workout Name" [(ngModel)]="workoutTitle">
         <textarea cols="30" rows="10" placeholder="Enter a Workout Notes" [(ngModel)]="workout.workoutNote"></textarea>
     </div>
     <div mat-dialog-actions>

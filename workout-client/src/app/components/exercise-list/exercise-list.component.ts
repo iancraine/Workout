@@ -5,7 +5,7 @@ import { Exercise } from 'src/app/models/exercise';
 import { MatDialog,} from '@angular/material/dialog';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-exercise-list',
@@ -15,8 +15,10 @@ import { Observable } from 'rxjs';
 export class ExerciseListComponent implements OnInit {
 
   public exercises$!: Observable<Exercise[]>;
+  public filteredExercises$!: Observable<Exercise[]>;
   public workoutStart$!: Observable<boolean>;
   public showForm: boolean = false;
+  public searchInput: string ='';
 
 
   constructor(
@@ -28,9 +30,15 @@ export class ExerciseListComponent implements OnInit {
 
   ngOnInit(){
     this.exercises$ = this.exerciseService.getExercisesStore();
+    this.filteredExercises$ = this.exerciseService.getFilteredExercises();
     // this.exerciseService.init();
-    this.workoutStart$ = this.newWorkoutService.getForm();    
+    this.workoutStart$ = this.newWorkoutService.getForm();
 
+
+  }
+
+  filterExercise(){
+    this.exerciseService.filterExercise(this.searchInput);
   }
   
   public toggleForm(){

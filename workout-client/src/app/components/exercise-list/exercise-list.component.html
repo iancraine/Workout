@@ -6,14 +6,17 @@
     
       <div class="button-container">
         <button (click)="toggleForm()" class="addNewExercise">Add New Exercise</button>
+        <input type="text" placeholder="Search Exercises" [(ngModel)]="searchInput" (input)="filterExercise()">
+        <!-- REMOVE BUTTON????? -->
+        <button class="ri-search-eye-line">Search</button>
       </div>
       <app-new-exercise *ngIf="showForm"/>
 
     </div> 
     
     <div class="exercises-background">
-        <div class="exercise">
-            <div *ngFor="let item of exercises$ | async" class="exercise-card"> 
+        <div class="exercise" *ngIf="searchInput.length > 0; else exerciseList">
+            <div *ngFor="let item of filteredExercises$ | async" class="exercise-card"> 
                 <div id="exercise-box">
                     <a [routerLink]="['/exercise', item.exerciseId]"><h1>{{item.exerciseName}}</h1></a>
 
@@ -33,5 +36,35 @@
                 </div>
             </div>
         </div>
+
+
+        <ng-template #exerciseList>
+            <div class="exercise">
+                <div *ngFor="let item of exercises$ | async" class="exercise-card" #exerciseList>
+                    <div id="exercise-box">
+                        <a [routerLink]="['/exercise', item.exerciseId]">
+                            <h1>{{item.exerciseName}}</h1>
+                        </a>
+        
+                        <div class="image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                                alt="" class="exercise-pic">
+        
+                            <!--*************************** Needs Styling ************************************ -->
+                            <!-- <img src={{item.exercisePic}} alt=""> -->
+        
+                        </div>
+                        <button class="ri-add-line" *ngIf="workoutStart$|async"
+                            (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
+        
+                        <div class="description">
+                            <h5 class="description">Description: </h5>
+                            <p class="description-box">{{item.exerciseDesc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        
     </div>
 </div>

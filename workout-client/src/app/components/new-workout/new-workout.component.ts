@@ -27,6 +27,7 @@ export class NewWorkoutComponent implements OnInit {
     exerciseName: '',
     workoutExerciseId: 0,
   };
+  public workoutTitle: string = '';
 
   //Get after workout started
   public currentWorkout$!: Observable<Workout[]>;
@@ -38,6 +39,7 @@ export class NewWorkoutComponent implements OnInit {
   //Check if Workout is started
   public workoutStart$!: Observable<boolean>;
   public exercises$!: Observable<Exercise[]>;
+  public workoutTitleStore: string = '';
 
 
   constructor(
@@ -58,6 +60,11 @@ export class NewWorkoutComponent implements OnInit {
     this.workoutStart$ = this.newWorkoutService.getForm();
     this.currentWorkout$ = this.newWorkoutService.getWorkout();
     this.exercises$ = this.exerciseService.getExercisesStore();
+    this.newWorkoutService.getWorkoutName().subscribe(
+      (data) => {
+        this.workoutTitleStore = data;
+      }
+    );
 
   }
 
@@ -67,6 +74,7 @@ export class NewWorkoutComponent implements OnInit {
 
   startWorkout(){
     this.newWorkoutService.startWorkout();
+    this.newWorkoutService.setName(this.workoutTitle);
   }
 
   finishWorkout(){
@@ -84,7 +92,8 @@ export class NewWorkoutComponent implements OnInit {
     }
     this.workout.setsCompleted = exerciseForm.value.setsCompleted;
     this.workout.repsTime = exerciseForm.value.repsTime;
-    console.log(this.workout.exerciseId.toString());
+    this.workout.workoutName = this.workoutTitleStore;
+
     
     this.exerciseService.getExerciseById(this.workout.exerciseId.toString()).subscribe(
       (data) => {

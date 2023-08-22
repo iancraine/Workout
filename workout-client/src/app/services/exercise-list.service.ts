@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Exercise } from '../models/exercise';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { Exercise } from '../models/exercise';
 })
 export class ExerciseListService {
   private exercises$ = new BehaviorSubject<Exercise[]>([]);
+  private filteredExercises$ = new BehaviorSubject<Exercise[]>([]);
+
 
   private baseUrl!: string
 
@@ -32,9 +34,19 @@ export class ExerciseListService {
     return this.exercises$;
   }
 
-  mapToExercise(){
-    this.exercises$.pipe
+  public getFilteredExercises():Observable<Exercise[]>{
+    return this.filteredExercises$;
   }
+
+  filterExercise(filter: string){
+    this.exercises$.pipe(map(
+      exercises => exercises.filter(exercise => exercise.exerciseName.toLowerCase().includes(filter.toLowerCase()))
+    )).subscribe(data =>{
+      console.log(data);
+      
+      this.filteredExercises$.next(data);
+    });
+    }
 
 
   getExerciseById(exerciseId: string) : Observable<Exercise>{

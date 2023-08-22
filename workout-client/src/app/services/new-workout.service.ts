@@ -9,6 +9,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 export class NewWorkoutService {
   private workout$ = new BehaviorSubject<Workout[]>([]);
   private workoutStart$ = new BehaviorSubject<boolean>(false);
+  private workoutTitle$ = new BehaviorSubject<string>('');
   private baseUrl!: string
 
 
@@ -19,6 +20,14 @@ export class NewWorkoutService {
 
   public addWorkout(newWorkout: Workout){
     this.workout$.next(this.workout$.value.concat(newWorkout)); 
+  }
+
+  public getWorkoutName(): Observable<string>{
+    return this.workoutTitle$;
+  }
+
+  public setName(title: string): void {
+    this.workoutTitle$.next(title);
   }
 
   public getWorkout(): Observable<Workout[]>{
