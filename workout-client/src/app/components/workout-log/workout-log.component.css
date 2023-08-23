@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column;
     height: 100%;
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
 }
 .title{
     color: white;
@@ -12,7 +12,7 @@
     text-align: center;
 }
 .details-background{
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
     flex: 1 1 auto ;
 }
 .elements-container{
@@ -23,7 +23,7 @@
     margin: 0 auto;
 }
 .element{
-    background-color: hsl(248, 80%, 14%);
+    background-color: var(--first-color);
     border-radius: 1.5rem;
     border: solid 3px black;
     margin: 2rem;
@@ -38,10 +38,6 @@ button:focus{
     outline: 0 solid transparent;
 }
 .element:hover {
-    border: 1px solid #4a7545;
-    border-radius: 9px;
-    box-shadow: 0 0 4px 1px rgba(25, 247, 121, 0.925);
-}
-.elements-container:hover{
-    cursor: pointer;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.925);
 }

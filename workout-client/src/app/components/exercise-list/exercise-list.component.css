@@ -1,6 +1,8 @@
 .page{
     margin: 0px;
-    background-color: hsl(248, 79%, 19%);
+    /* background-color: hsl(248, 79%, 19%); */
+    background-color: var(--body-color);
+
 }
 .title{
     color: white;
@@ -14,7 +16,7 @@
     text-align: center;
 }
 .exercises-background{
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
 }
 .exercise{
     display: flex;
@@ -28,7 +30,7 @@
     width: calc(100% * (1/4) - 1rem);
 }
 #exercise-box{
-    background-color: hsl(248, 80%, 14%);
+    background-color: var(--first-color);
     border-radius: 25px;
     border: solid 3px black;
     margin: 20px;
@@ -76,10 +78,70 @@ button:focus{
 }
 
 #exercise-box:hover {
-    border: 1px solid #4a7545;
+    border: 1px solid #ffffff;
     border-radius: 9px;
-    box-shadow: 0 0 4px 1px rgba(25, 247, 121, 0.925);
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.925);
 }
 a{
     color: inherit;
 }
+
+.search-input input{
+    /* width: 100%; */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    /* background: var(--body-color); */
+    padding: 10px;
+    outline: none;
+    color: black;
+    font-size: 1em;
+    border-radius: 50px;
+    right: 0;
+}
+.search-input i{
+    position: absolute;
+    color: grey;
+}
+
+.button-29 {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    /* position: relative; */
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  }
+  
+  .button-29:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  }
+  
+  .button-29:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .button-29:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+  }

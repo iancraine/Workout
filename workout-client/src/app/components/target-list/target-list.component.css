@@ -17,7 +17,8 @@
     grid-template-rows: min-content;
     gap: 1rem;
     padding: 1rem;
-    background: hsl(248, 80%, 14%);
+    background: linear-gradient(30deg, rgb(192, 2, 116), blue);
+    /* background-color: var(--first-color); */
     border-radius: 1rem;
     cursor: pointer;
 }

@@ -1,6 +1,6 @@
 .page{
     margin: 0px;
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
 }
 .title{
     color: white;
@@ -14,7 +14,7 @@
     text-align: center;
 }
 .exercises-background{
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
 }
 .exercise{
     display: flex;
@@ -27,7 +27,7 @@
     width: calc(100% * (1/4) - 1rem);
 }
 #exercise-box{
-    background-color: hsl(248, 80%, 14%);
+    background-color: var(--first-color);
     border-radius: 25px;
     border: solid 3px black;
     margin: 20px;

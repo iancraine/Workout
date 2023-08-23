@@ -5,11 +5,11 @@
     --header-height: 3.5rem;
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(220, 68%, 54%);
-    --first-color-lighten: hsl(220, 68%, 97%);
+    --first-color: hsl(247, 44%, 12%);
+    --first-color-lighten: hsl(247, 42%, 26%);
     --title-color: hsl(220, 48%, 28%);
     --text-color: hsl(0, 0%, 100%);
-    --body-color: hsl(220, 100%, 99%);
+    --body-color: hsl(229, 44%, 12%);
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
     --body-font: "Poppins", sans-serif;
@@ -58,3 +58,10 @@
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.popupBackdrop{
+  background: linear-gradient(45deg, red, blue);
+  opacity: .2!important;
+}
+
+

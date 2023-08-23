@@ -5,10 +5,12 @@
       <app-target-list/>
     
       <div class="button-container">
-        <button (click)="toggleForm()" class="addNewExercise">Add New Exercise</button>
-        <input type="text" placeholder="Search Exercises" [(ngModel)]="searchInput" (input)="filterExercise()">
-        <!-- REMOVE BUTTON????? -->
-        <button class="ri-search-eye-line">Search</button>
+        <div class="search-input">
+            <i class="ri-search-eye-line"></i>
+            <input type="text" class="searchBar" placeholder="Search..." [(ngModel)]="searchInput"(input)="filterExercise()">
+        </div>
+        <div class="edit-button"></div>
+        <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
       </div>
       <app-new-exercise *ngIf="showForm"/>
 

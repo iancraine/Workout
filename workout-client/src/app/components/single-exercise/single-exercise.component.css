@@ -1,6 +1,6 @@
 .page{
     margin: 0px;
-    background-color: hsl(248, 79%, 19%);
+    background-color: var(--body-color);
 }
 .button-container{
     text-align: center;
