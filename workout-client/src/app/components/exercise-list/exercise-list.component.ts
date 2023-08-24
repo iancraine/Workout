@@ -6,6 +6,7 @@ import { MatDialog,} from '@angular/material/dialog';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { Observable, map } from 'rxjs';
+import { SingleExerciseComponent } from '../single-exercise/single-exercise.component';
 
 @Component({
   selector: 'app-exercise-list',
@@ -56,6 +57,18 @@ export class ExerciseListComponent implements OnInit {
       data: {
         exerciseId: exerciseId,
         exerciseName: exerciseName,
+      }}
+    );
+  }
+
+  openExercisePopup(exercise: Exercise){
+    this.dialogRef.open(SingleExerciseComponent,
+      {
+      width: '60%',
+      backdropClass:'popupBackdrop',
+      data: {
+        exercise: exercise,
+        
       }}
     );
   }

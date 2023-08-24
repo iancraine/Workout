@@ -5,12 +5,14 @@
       <app-target-list/>
     
       <div class="button-container">
+        <div class="edit-button">
+            <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
+        </div>
+
         <div class="search-input">
             <i class="ri-search-eye-line"></i>
             <input type="text" class="searchBar" placeholder="Search..." [(ngModel)]="searchInput"(input)="filterExercise()">
-        </div>
-        <div class="edit-button"></div>
-        <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
+        </div>  
       </div>
       <app-new-exercise *ngIf="showForm"/>
 
@@ -20,14 +22,17 @@
         <div class="exercise" *ngIf="searchInput.length > 0; else exerciseList">
             <div *ngFor="let item of filteredExercises$ | async" class="exercise-card"> 
                 <div id="exercise-box">
-                    <a [routerLink]="['/exercise', item.exerciseId]"><h1>{{item.exerciseName}}</h1></a>
-
-                    <div class="image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU" alt="" class="exercise-pic">
-
-                        <!--*************************** Needs Styling ************************************ -->
-                        <!-- <img src={{item.exercisePic}} alt=""> -->
-
+                    <div class="exercise-click" (click)="openExercisePopup(item)">
+                        <h1>{{item.exerciseName}}</h1>
+                        
+                        <div class="image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                                alt="" class="exercise-pic">
+                        
+                            <!--*************************** Needs Styling ************************************ -->
+                            <!-- <img src={{item.exercisePic}} alt=""> -->
+                        
+                        </div>
                     </div>
                     <button class="ri-add-line" *ngIf="workoutStart$|async" (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
 
@@ -43,19 +48,20 @@
         <ng-template #exerciseList>
             <div class="exercise">
                 <div *ngFor="let item of exercises$ | async" class="exercise-card" #exerciseList>
-                    <div id="exercise-box">
-                        <a [routerLink]="['/exercise', item.exerciseId]">
+                    <div id="exercise-box" >
+                        <div class="exercise-click" (click)="openExercisePopup(item)">
                             <h1>{{item.exerciseName}}</h1>
-                        </a>
-        
-                        <div class="image">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
-                                alt="" class="exercise-pic">
-        
-                            <!--*************************** Needs Styling ************************************ -->
-                            <!-- <img src={{item.exercisePic}} alt=""> -->
-        
+                            
+                            <div class="image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                                    alt="" class="exercise-pic">
+                            
+                                <!--*************************** Needs Styling ************************************ -->
+                                <!-- <img src={{item.exercisePic}} alt=""> -->
+                            
+                            </div>
                         </div>
+                        
                         <button class="ri-add-line" *ngIf="workoutStart$|async"
                             (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
         

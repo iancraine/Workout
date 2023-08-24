@@ -22,6 +22,9 @@
     border-radius: 1rem;
     cursor: pointer;
 }
+.target-element>i{
+    text-align: center;
+}
 .snaps-inline{
     scroll-snap-type: inline mandatory;
     scroll-padding-inline: 1rem;

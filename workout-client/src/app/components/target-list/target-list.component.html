@@ -8,7 +8,7 @@
                 <a [routerLink]="['/exercises', item.targetId]"><h1>{{item.targetName}}</h1></a>
             </div>
         </div>
-        <div class="target-element" *ngIf="!showForm" (click) = 'toggleForm()'>Add A Group</div>
+        <div class="target-element" *ngIf="!showForm" (click) = 'toggleForm()'>Add A Group <i class="ri-add-circle-fill"></i></div>
         <div class="target-element" *ngIf="showForm" (click) = 'toggleForm()'>Cancel</div>
         <div class="target-element" *ngIf="showForm">
             <form #targetForm = 'ngForm' (ngSubmit)="onSubmit(targetForm)">

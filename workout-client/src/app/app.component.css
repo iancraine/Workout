@@ -1,7 +1,7 @@
 #app {
     display: flex;
     flex-flow: column;
-    gap: 2.5rem;
+    gap: 3rem;
 }
 app-navbar{
     flex: 0 1 auto;

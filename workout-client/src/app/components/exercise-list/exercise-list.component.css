@@ -13,8 +13,12 @@
     display: block;
 }
 .button-container{
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
+
 .exercises-background{
     background-color: var(--body-color);
 }
@@ -82,8 +86,9 @@ button:focus{
     border-radius: 9px;
     box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.925);
 }
-a{
-    color: inherit;
+.exercise-click:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .search-input input{
@@ -98,7 +103,7 @@ a{
     right: 0;
 }
 .search-input i{
-    position: absolute;
+    /* position: absolute; */
     color: grey;
 }
 

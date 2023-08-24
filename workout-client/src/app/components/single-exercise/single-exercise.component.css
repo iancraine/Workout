@@ -23,3 +23,24 @@
     box-shadow: #422800 4px 4px 0 0;
     justify-self: auto;
 }
+.exercise-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    /* border: 2px solid red;
+    height: calc(100vh - 6rem); */
+}
+.title{
+    text-align: center;
+    padding: 1rem;
+}
+.description{
+    color: black;
+    padding: 10px;
+    background: white;
+    border-radius: 2rem;
+    width: 40%;
+}
