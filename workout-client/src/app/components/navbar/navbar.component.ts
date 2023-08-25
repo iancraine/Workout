@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   openDialog(){
     this.dialogRef.open(NewWorkoutComponent,{
-      width: "50%",
+      width: "80%",
       backdropClass:'popupBackdrop',
     })
   }

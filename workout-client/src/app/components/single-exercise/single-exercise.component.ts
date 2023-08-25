@@ -92,7 +92,7 @@ export class SingleExerciseComponent implements OnInit{
   openPopup(exerciseId: number, exerciseName: string){
     this.dialogRef.open(NewWorkoutComponent,
       {
-      width: '60%',
+      width: '80%',
       data: {
         exerciseId: exerciseId,
         exerciseName: exerciseName,

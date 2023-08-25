@@ -46,6 +46,7 @@ export class NewWorkoutService {
     return this.http.post<Array<Workout>>(this.baseUrl+"/addworkout", newWorkout).subscribe(
       () => {
         this.workoutStart$.next(false);
+        this.workoutTitle$.next('');
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

@@ -70,12 +70,14 @@ export class SingleTargetComponent implements OnInit{
       });
   }
 
-  openPopup(exerciseId: number){
+  openPopup(exerciseId: number, exerciseName: string){
     this.dialogRef.open(NewWorkoutComponent,
       {
-      width: '60%',
+      width: '80%',
+      backdropClass:'popupBackdrop',
       data: {
-        exerciseId: exerciseId
+        exerciseId: exerciseId,
+        exerciseName: exerciseName,
       }}
     );
   }
