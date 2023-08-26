@@ -26,11 +26,10 @@
                         <h1>{{item.exerciseName}}</h1>
                         
                         <div class="image">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                            <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
                                 alt="" class="exercise-pic">
                         
-                            <!--*************************** Needs Styling ************************************ -->
-                            <!-- <img src={{item.exercisePic}} alt=""> -->
+                            <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="">
                         
                         </div>
                     </div>
@@ -53,11 +52,10 @@
                             <h1>{{item.exerciseName}}</h1>
                             
                             <div class="image">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                                <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
                                     alt="" class="exercise-pic">
                             
-                                <!--*************************** Needs Styling ************************************ -->
-                                <!-- <img src={{item.exercisePic}} alt=""> -->
+                                <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="">
                             
                             </div>
                         </div>

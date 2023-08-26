@@ -13,13 +13,13 @@
 }
 .details-background{
     background-color: var(--body-color);
-    flex: 1 1 auto ;
+    /* flex: 1 1 auto ; */
 }
 .elements-container{
     justify-content: center;
 }
 .card{
-    width: 30rem;
+    width: 75%;
     margin: 0 auto;
 }
 .element{

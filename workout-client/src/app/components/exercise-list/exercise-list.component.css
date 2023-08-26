@@ -50,7 +50,7 @@ h1{
     width: 250px;
     height: 250px;
     border-radius: 15px;
-    background-color: white;
+    /* background-color: white; */
 }
 .description, .description-box{
     padding: 5px;
@@ -150,3 +150,12 @@ button:focus{
     box-shadow: #3c4fe0 0 3px 7px inset;
     transform: translateY(2px);
   }
+  img {
+    float: left;
+    object-fit: contain;
+    /* object-fit: cover; */
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    /* background-color: white; */
+}

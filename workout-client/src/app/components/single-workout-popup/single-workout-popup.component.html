@@ -1,41 +1,57 @@
-<div mat-dialog-title>
-    <h1 *ngIf="!edit">{{workout[0].workoutName}}</h1>
-    <h1 *ngIf="edit"><input type="text" [(ngModel)]="workout[0].workoutName"></h1>
-    <button *ngIf="edit" class="ri-delete-bin-fill" (click)="deleteWorkout()"></button>
-    <label for="favorite" *ngIf="edit">Favorite</label>
-    <input type="checkbox" id="favorite" *ngIf="edit" [(ngModel)]="workout[0].favorite">
+<div class="page">
+    <div class="container">
+        <div class="title">
+            <h1 *ngIf="edit"><input type="text" [(ngModel)]="workout[0].workoutName">
+                <button (click)="toggleForm()" *ngIf="edit">Cancel</button>
+            </h1>       
+            <h1 *ngIf="!edit">{{workout[0].workoutName}}
+                <button (click)="toggleForm()" *ngIf="!edit">Edit</button>
+            </h1>
+            
 
-    <p *ngIf="!edit">{{workout[0].workoutNote}}</p>
-    <textarea [(ngModel)]="workout[0].workoutNote" *ngIf="edit"></textarea>
-</div>
+        </div>
+        <div>
+            <label for="favorite" *ngIf="edit">Favorite: </label>
+            <input type="checkbox" id="favorite" *ngIf="edit" [(ngModel)]="workout[0].favorite">
+        </div>
+        
+        <div class="title" style="padding-bottom: 0;">Description: </div>
+        <div class="description">
+            <p *ngIf="!edit">{{workout[0].workoutNote}}</p>
+            <textarea [(ngModel)]="workout[0].workoutNote" *ngIf="edit"></textarea>
+        </div>
+
+        <div>
+            <button (click)="saveWorkout()" *ngIf="edit">Save</button>
+            <button *ngIf="edit" class="ri-delete-bin-fill" (click)="deleteWorkout()">Delete Workout</button>
+        </div>
+
+    </div>
+
+    
+    
+    <div mat-dialog-content class="table-container">
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps/Time</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr *ngFor="let exercise of workout">
+                    <td>{{exercise.exerciseName}}</td>
+                    <td>{{exercise.setsCompleted}}</td>
+                    <td>{{exercise.repsTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 
-<div mat-dialog-content>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Exercise</th>
-                <th>Sets</th>
-                <th>Reps/Time</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let exercise of workout">
-                <td>{{exercise.exerciseName}}</td>
-                <td>{{exercise.setsCompleted}}</td>
-                <td>{{exercise.repsTime}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div mat-dialog-actions>
-    <button (click)="closePopup()" *ngIf="!edit">Close</button>
-    <button (click)="toggleForm()" *ngIf="edit">Cancel</button>
-    <button (click)="toggleForm()" *ngIf="!edit">Edit</button>
-    <button (click)="saveWorkout()" *ngIf="edit">Save</button>
-
+    <button (click)="closePopup()" class="close">X</button>
 
 </div>

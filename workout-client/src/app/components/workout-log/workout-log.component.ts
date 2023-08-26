@@ -36,7 +36,8 @@ export class WorkoutLogComponent implements OnInit{
   openDialog(workoutId: number){
     this.dialogRef.open(SingleWorkoutPopupComponent,
       {
-      width: '40%',
+      width: '80%',
+      backdropClass:'popupBackdrop',
       data: {
         workoutId: workoutId
       }}
