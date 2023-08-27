@@ -4,70 +4,73 @@
 
       <app-target-list/>
     
-      <div class="button-container">
-        <div class="edit-button">
-            <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
+        <div class="button-container">
+            <div class="edit-button">
+                <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
+            </div>
+        
+            <div class="search-input">
+                <i class="ri-search-eye-line"></i>
+                <input type="text" class="searchBar" placeholder="Search..." [(ngModel)]="searchInput"
+                    (input)="filterExercise()">
+            </div>
         </div>
-
-        <div class="search-input">
-            <i class="ri-search-eye-line"></i>
-            <input type="text" class="searchBar" placeholder="Search..." [(ngModel)]="searchInput"(input)="filterExercise()">
-        </div>  
-      </div>
       <app-new-exercise *ngIf="showForm"/>
 
     </div> 
     
     <div class="exercises-background">
-        <div class="exercise" *ngIf="searchInput.length > 0; else exerciseList">
-            <div *ngFor="let item of filteredExercises$ | async" class="exercise-card"> 
-                <div id="exercise-box">
-                    <div class="exercise-click" (click)="openExercisePopup(item)">
+        <div class="exercises" *ngIf="searchInput.length > 0; else exerciseList">
+            <div *ngFor="let item of filteredExercises$ | async" class="exercises-container"> 
+                <div id="exercise-box" (click)="openExercisePopup(item)">
+                    <div>
                         <h1>{{item.exerciseName}}</h1>
-                        
-                        <div class="image">
-                            <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
-                                alt="" class="exercise-pic">
-                        
-                            <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="">
-                        
-                        </div>
                     </div>
-                    <button class="ri-add-line" *ngIf="workoutStart$|async" (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
-
+                    
+                    <div class="image">
+                        <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                            alt="" class="exercise-pic">
+                    
+                        <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="" class="exercise-pic">
+                    
+                    </div>
+    
                     <div class="description">
                         <h5 class="description">Description: </h5>
                         <p class="description-box">{{item.exerciseDesc}}</p>
                     </div>
                 </div>
+
+                <button class="ri-add-line add-button" *ngIf="workoutStart$|async"
+                    (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
             </div>
         </div>
 
 
         <ng-template #exerciseList>
-            <div class="exercise">
-                <div *ngFor="let item of exercises$ | async" class="exercise-card" #exerciseList>
-                    <div id="exercise-box" >
-                        <div class="exercise-click" (click)="openExercisePopup(item)">
+            <div class="exercises">
+                <div *ngFor="let item of exercises$ | async" class="exercises-container" #exerciseList>
+                    <div id="exercise-box" (click)="openExercisePopup(item)">
+                        <div>
                             <h1>{{item.exerciseName}}</h1>
-                            
-                            <div class="image">
-                                <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
-                                    alt="" class="exercise-pic">
-                            
-                                <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="">
-                            
-                            </div>
                         </div>
                         
-                        <button class="ri-add-line add-button" *ngIf="workoutStart$|async"
-                            (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
+                        <div class="image">
+                            <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                                alt="" class="exercise-pic">
+                        
+                            <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="" class="exercise-pic">
+                        
+                        </div>
         
                         <div class="description">
                             <h5 class="description">Description: </h5>
                             <p class="description-box">{{item.exerciseDesc}}</p>
                         </div>
                     </div>
+
+                    <button class="ri-add-line add-button" *ngIf="workoutStart$|async"
+                        (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
                 </div>
             </div>
         </ng-template>

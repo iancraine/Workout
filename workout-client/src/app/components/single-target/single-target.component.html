@@ -1,40 +1,48 @@
 <div class="page">
-    <div class="page-title">
-      <h2 class="title" *ngIf="!editTarget">{{currentTarget.targetName}} Exercises</h2>
-      <input type="text" *ngIf="editTarget" [(ngModel)]="currentTarget.targetName" name="targetName">
-      <button  (click)="toggleForm()" *ngIf="!editTarget">Edit</button>
-      <button  (click)="updateTarget()" *ngIf="editTarget">Save</button>
-      <button  (click)="toggleForm()" *ngIf="editTarget">Cancel</button>
-      <button (click)="deleteTarget()" *ngIf="editTarget">Delete</button>
-
-
-    
-      <div class="button-container">
+    <div class="title">
+        <h1 *ngIf="!editTarget">{{currentTarget.targetName}} Exercises
+            <button (click)="toggleForm()" *ngIf="!editTarget" class="ri-edit-2-line edit"></button>
+        </h1>
+        
+        <div *ngIf="editTarget">
+            <input type="text" [(ngModel)]="currentTarget.targetName" name="targetName">
+            <button (click)="toggleForm()" class="edit" id="cancel">Cancel</button>
+        </div>
+        
+        <div class="button-container">
+            <button  (click)="updateTarget()" class="action" *ngIf="editTarget">Save</button>
+            <button (click)="deleteTarget()" class="action" id="finish-btn" *ngIf="editTarget">Delete This Group</button>
+        </div>
+    </div>
+        
+    <div style="text-align: center;">
         <button class="addNewExercise">Add New Exercise</button>
-      </div>
-
-    </div> 
+    </div>
     
     <div class="exercises-background">
-        <div class="exercise">
-            <div *ngFor="let item of exercises" class="exercise-card"> 
-                <div id="exercise-box">
-                    <h1>{{item.exerciseName}}</h1>
-
+        <div class="exercises">
+            <div *ngFor="let item of exercises" class="exercises-container" #exerciseList>
+                <div id="exercise-box" (click)="openExercisePopup(item)">
+                    <div>
+                        <h1>{{item.exerciseName}}</h1>
+                    </div>
+                    
                     <div class="image">
                         <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
-                        alt="" class="exercise-pic">
-                
-                        <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="" class="exercise-pic">                   
+                            alt="" class="exercise-pic">
+                    
+                        <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="" class="exercise-pic">
+                    
                     </div>
-                    <button class="ri-add-line" *ngIf="workoutStart$|async" (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
-
-
+    
                     <div class="description">
                         <h5 class="description">Description: </h5>
                         <p class="description-box">{{item.exerciseDesc}}</p>
                     </div>
                 </div>
+
+                <button class="ri-add-line add-button" *ngIf="workoutStart$|async"
+                    (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
             </div>
         </div>
     </div>

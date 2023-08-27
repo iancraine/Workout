@@ -3,34 +3,31 @@
     background-color: var(--body-color);
 }
 .title{
-    color: white;
-    font-size: 42px;
-    padding: 1rem;
-    margin-bottom: 20px;
     text-align: center;
-    display: block;
+    padding: 1rem;
 }
 .button-container{
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 .exercises-background{
     background-color: var(--body-color);
 }
-.exercise{
+.exercises{
     display: flex;
     flex-wrap: wrap; 
     border-radius: 10px;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 0 ;
-}
-.exercise-card{
-    width: calc(100% * (1/4) - 1rem);
 }
 #exercise-box{
     background-color: var(--first-color);
     border-radius: 25px;
     border: solid 3px black;
     margin: 20px;
+    width: 300px;
+    padding: 10px;
+    position: relative;
 }
 h1{
     text-align: center;
@@ -43,7 +40,8 @@ h1{
     width: 250px;
     height: 250px;
     border-radius: 15px;
-    background-color: white;
+    float: left;
+    object-fit: contain;
 }
 .description, .description-box{
     padding: 5px;
@@ -75,7 +73,78 @@ button:focus{
 }
 
 #exercise-box:hover {
-    border: 1px solid #4a7545;
+    border: 1px solid #ffffff;
     border-radius: 9px;
-    box-shadow: 0 0 4px 1px rgba(25, 247, 121, 0.925);
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.925);
+    cursor: pointer;
+}
+.edit {
+    margin-right: 15px;
+    background: none;
+    border-radius: .375rem;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    font-size: 1.5rem;
+    /* font-weight: 700; */
+    /* padding: 0.5rem; */
+    text-align: left;
+}
+#cancel{
+    border: 1px solid grey;
+    background: var(--first-color);
+    font-size: 1rem;
+    padding: .5rem;
+    align-self: center;
+    margin-left: 1rem;
+}
+.action {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    /* position: relative; */
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+#finish-btn{
+background-image: radial-gradient(100% 100% at 100% 0, #5a78ff 0, #c01291 100%);
+margin-right: 1rem;
+}
+.add-button{
+    position: relative;
+    left: 285px;
+    bottom: 50px;
+    width: 50px;
+    height: 40px;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 40px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border: white solid 2px;
+    cursor: pointer;
 }

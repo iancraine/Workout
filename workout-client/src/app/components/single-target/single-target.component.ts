@@ -9,6 +9,7 @@ import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
+import { SingleExerciseComponent } from '../single-exercise/single-exercise.component';
 
 @Component({
   selector: 'app-single-target',
@@ -107,6 +108,18 @@ export class SingleTargetComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+
+  openExercisePopup(exercise: Exercise){
+    this.dialogRef.open(SingleExerciseComponent,
+      {
+      width: '60%',
+      backdropClass:'popupBackdrop',
+      data: {
+        exercise: exercise,
+        
+      }}
+    );
   }
 
 }

@@ -71,6 +71,7 @@ nav li{
     /* outline: black; */
     border: white solid 2px;
     cursor: pointer;
+    z-index: 1;
 }
 .floating-btn:active{
     background: gray;
