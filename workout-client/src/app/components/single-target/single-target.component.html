@@ -22,7 +22,10 @@
                     <h1>{{item.exerciseName}}</h1>
 
                     <div class="image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU" alt="" class="exercise-pic">
+                        <img *ngIf="item.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
+                        alt="" class="exercise-pic">
+                
+                        <img *ngIf="item.exercisePic != null" src={{item.exercisePic}} alt="" class="exercise-pic">                   
                     </div>
                     <button class="ri-add-line" *ngIf="workoutStart$|async" (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
 

@@ -75,5 +75,8 @@ nav li{
 .floating-btn:active{
     background: gray;
 }
+.floating-btn.started-floating-btn{
+    background: hsl(280, 81%, 36%);
+}
 
 

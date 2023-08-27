@@ -159,3 +159,9 @@ button:focus{
     border-radius: 15px;
     /* background-color: white; */
 }
+
+/* Make stay in right corner****************** */
+.add-button{
+    position: relative;
+    right: 0;
+}

@@ -47,6 +47,7 @@ export class NewWorkoutService {
       () => {
         this.workoutStart$.next(false);
         this.workoutTitle$.next('');
+        this.workout$.next([]);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

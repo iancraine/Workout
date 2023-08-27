@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="action add-exercise"><button type="submit" [disabled]="exerciseFormFilled.invalid">Add Exercise</button></div>
+            <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseFormFilled.invalid">Add Exercise</button></div>
         </form>
     </div>
     
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="action add-exercise"><button type="submit" [disabled]="exerciseForm.invalid">Add Exercise</button></div>
+            <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseForm.invalid">Add Exercise</button></div>
         </form>
     
     
@@ -83,8 +83,8 @@
             <input type="text" placeholder="Enter A Workout Name" [(ngModel)]="workoutTitle">
             <textarea  placeholder="Enter Workout Notes" [(ngModel)]="workout.workoutNote"></textarea>
         </div>
-        <div  class="action">
-            <button *ngIf="!(workoutStart$|async)" (click)="startWorkout()" class="button-29">Start Workout</button>
+        <div  style="text-align: center;">
+            <button *ngIf="!(workoutStart$|async)" [disabled]="workoutTitle == ''" (click)="startWorkout()" class="button-29">Start Workout</button>
     
         </div>
     <!-- </form> -->
@@ -106,16 +106,15 @@
                     <td>{{exercise.exerciseName}}</td>
                     <td>{{exercise.setsCompleted}}</td>
                     <td>{{exercise.repsTime}}</td>
-                    <td *ngIf="this.data?.exerciseId"><button>Add Workout</button></td>
-                </tr>
+                 </tr>
             </tbody>
         </table>
     </div>
 
     <button (click)="closePopup()" class="close">X</button>
 
-    <div mat-dialog-actions>
-        <button *ngIf="workoutStart$|async" (click)="finishWorkout()">Finish Workout</button>
+    <div mat-dialog-actions class="finish-container">
+        <button class="action" id="finish-btn" [disabled]="!(currentWorkout$|async)?.length" *ngIf="workoutStart$|async" (click)="finishWorkout()">Finish Workout</button>
     </div>
     
 </div>

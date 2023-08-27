@@ -4,8 +4,14 @@
         <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit()" class="exercise-form">
  
                 <div class="title">
-                    <h1 *ngIf="!edit">{{exercise.exerciseName}}</h1>
-                    <input *ngIf="edit" type="text" [(ngModel)]="exercise.exerciseName" name="exerciseName">
+                    <h1 *ngIf="!edit">{{exercise.exerciseName}}
+                        <button *ngIf="!edit" (click)="toggleForm()" class="addNewExercise">Edit</button>
+                    
+                    </h1>
+                    <h1>
+                        <input *ngIf="edit" type="text" [(ngModel)]="exercise.exerciseName" name="exerciseName">
+                        <button *ngIf="edit" (click)="toggleForm()" class="addNewExercise">Cancel</button>
+                    </h1>
                 </div>
                 
                 
@@ -23,12 +29,8 @@
                 </div>
 
                 <div class="button-container">
-                    <button class="ri-add-line" *ngIf="workoutStart$|async" type="button"
+                    <button class="ri-add-line add-button" *ngIf="!edit && (workoutStart$|async)" type="button"
                         (click)="openPopup(exercise.exerciseId, exercise.exerciseName)"></button>
-                    <button *ngIf="!edit" (click)="toggleForm()" class="addNewExercise">Edit</button>
-                    <button *ngIf="edit" (click)="toggleForm()" class="addNewExercise">Cancel</button>
-                
-                
                 </div>
             
             <button *ngIf="edit" type="submit" [disabled]="exerciseForm.invalid">Save Exercise</button>
