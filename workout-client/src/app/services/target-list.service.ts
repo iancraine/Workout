@@ -30,4 +30,7 @@ export class TargetListService {
   deleteTarget(targetId: string){
     return this.http.delete(`${this.baseUrl}/remove/${targetId}`);
   }
+  addExerciseToTarget(targetId: string, exerciseId:string){
+    return this.http.post(`${this.baseUrl}/${targetId}/addexercise`, exerciseId)
+  }
 }

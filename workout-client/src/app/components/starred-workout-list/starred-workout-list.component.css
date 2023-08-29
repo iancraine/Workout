@@ -1,43 +1,66 @@
 .page{
-    display: flex;
-    flex-flow: column;
-    height: 100%;
+    margin: 0px;
     background-color: var(--body-color);
 }
 .title{
     color: white;
-    font-size: 42px;
     padding: 1rem;
-    margin-bottom: 20px;
     text-align: center;
 }
 .details-background{
     background-color: var(--body-color);
-    flex: 1 1 auto ;
 }
-.elements-container{
-    justify-content: center;
-}
+
 .card{
-    width: 30rem;
+    width: 50%;
     margin: 0 auto;
+    position: relative;    
 }
 .element{
     background-color: var(--first-color);
     border-radius: 1.5rem;
     border: solid 3px black;
+    position: relative;
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.element > *{
-    text-align: center;
-}
+
 .element-description{
-    padding: 5px;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
 }
+
 button:focus{
     outline: 0 solid transparent;
 }
 .element:hover {
     border: 1px solid #ffffff;
     box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.925);
+    cursor: pointer;
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+table{
+    width: 75%;
+}
+th{
+    border-bottom:1px solid white ;
+}
+td{
+    text-align: center;
+}
+tbody>tr:nth-child(odd){
+    background-color: rgb(65, 68, 92);
 }

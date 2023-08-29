@@ -76,8 +76,8 @@ img {
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
-  }
-  .finish-container{
+}
+.finish-container{
     display: flex;
     justify-content: flex-end;
 }
@@ -93,4 +93,19 @@ img {
     align-self: center;
     margin-left: 1rem;
 }
-
+.close{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: 20px;
+    height: 20px;
+    background: var(--body-color);
+    border-radius: 50%;
+    color: #fff;
+    transition: background .5s;
+    border: none;
+    cursor: pointer;
+}
+.close:hover{
+    background: grey;
+}

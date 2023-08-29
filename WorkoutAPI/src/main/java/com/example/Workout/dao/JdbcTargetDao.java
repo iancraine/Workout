@@ -78,6 +78,13 @@ public class JdbcTargetDao implements TargetDao {
         jdbcTemplate.update(sql, targetId);
     }
 
+    @Override
+    public void addExerciseToTarget(int targetId, int exerciseId) {
+        String sql = "INSERT INTO target_exercise(target_id, target_name) " +
+                "VALUES (?,?);\n";
+        jdbcTemplate.update(sql,targetId,exerciseId);
+    }
+
     private Target mapRowToTarget(SqlRowSet rowSet) {
         Target result = new Target();
 

@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable} from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
 import { WorkoutService } from 'src/app/services/workout.service';
+import { SingleExerciseComponent } from '../single-exercise/single-exercise.component';
 
 @Component({
   selector: 'app-single-workout-popup',
@@ -35,6 +36,7 @@ export class SingleWorkoutPopupComponent implements OnInit{
     private ref: MatDialogRef<SingleWorkoutPopupComponent>,
     @Inject(MAT_DIALOG_DATA)public data:any,
     private workoutService: WorkoutService,
+    private dialogRef: MatDialog, 
     private router: Router,
 
     ){
@@ -89,5 +91,16 @@ export class SingleWorkoutPopupComponent implements OnInit{
       (error: HttpErrorResponse) => {
         alert(error.message);
       });
+  }
+  openExercisePopup(exerciseId: number){
+    this.dialogRef.open(SingleExerciseComponent,
+      {
+      width: '60%',
+      backdropClass:'popupBackdrop',
+      data: {
+        exerciseId: exerciseId,
+        
+      }}
+    );
   }
 }

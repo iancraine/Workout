@@ -2,10 +2,10 @@
     <div class="container">
         <div class="title">
             <h1 *ngIf="edit"><input type="text" [(ngModel)]="workout[0].workoutName">
-                <button (click)="toggleForm()" *ngIf="edit">Cancel</button>
+                <button (click)="toggleForm()" class="edit" id="cancel">Cancel</button>
             </h1>       
             <h1 *ngIf="!edit">{{workout[0].workoutName}}
-                <button (click)="toggleForm()" *ngIf="!edit">Edit</button>
+                <button *ngIf="!edit" (click)="toggleForm()" class="ri-edit-2-line edit"></button>
             </h1>
             
 
@@ -22,8 +22,7 @@
         </div>
 
         <div>
-            <button (click)="saveWorkout()" *ngIf="edit">Save</button>
-            <button *ngIf="edit" class="ri-delete-bin-fill" (click)="deleteWorkout()">Delete Workout</button>
+            <button *ngIf="edit" class="action" [disabled]="workout[0].workoutName == ''">Save Exercise</button>
         </div>
 
     </div>
@@ -43,7 +42,7 @@
     
             <tbody>
                 <tr *ngFor="let exercise of workout">
-                    <td>{{exercise.exerciseName}}</td>
+                    <td class="exercise-pop" (click)="openExercisePopup(exercise.exerciseId)">{{exercise.exerciseName}}</td>
                     <td>{{exercise.setsCompleted}}</td>
                     <td>{{exercise.repsTime}}</td>
                 </tr>
@@ -51,6 +50,9 @@
         </table>
     </div>
 
+    <div mat-dialog-actions class="finish-container">
+        <button class="action" id="finish-btn" *ngIf="edit" (click)="deleteWorkout()">Delete Workout</button>
+    </div>
 
     <button (click)="closePopup()" class="close">X</button>
 

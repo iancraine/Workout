@@ -5,13 +5,28 @@
 
     <div class="details-background">
         <div class="elements-container">
-            <div *ngFor="let day of workouts" class="card" (click)="openDialog(day[0].workoutId)"> 
+            <div *ngFor="let workout of workouts; let i = index" class="card" (click)="openDialog(workout[0].workoutId)"> 
                 <div class="element">
-                    <h1>{{day[0].workoutName}}</h1>
+                    <h1>{{workout[0].workoutName}}</h1>
 
                     <div class="element-description">
-                        <h5>Date: </h5>
-                        <p class="description-box">{{day[0].workoutDate}}</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Exercise</th>
+                                    <th>Sets</th>
+                                    <th>Reps/Time</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                <tr *ngFor="let exercise of workout">
+                                    <td>{{exercise.exerciseName}}</td>
+                                    <td>{{exercise.setsCompleted}}</td>
+                                    <td>{{exercise.repsTime}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

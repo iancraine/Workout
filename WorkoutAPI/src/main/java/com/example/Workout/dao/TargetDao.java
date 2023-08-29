@@ -16,6 +16,8 @@ public interface TargetDao {
 
     void deleteTarget(int targetId);
 
+    void addExerciseToTarget(int targetId, int exerciseId);
+
 
 
 

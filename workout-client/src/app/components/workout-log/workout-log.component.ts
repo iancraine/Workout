@@ -44,7 +44,8 @@ export class WorkoutLogComponent implements OnInit{
     );
   }
 
-  toggleFavorite(workout: Array<Workout>){
+  toggleFavorite(e:Event,workout: Array<Workout>){
+    e.stopPropagation();
     if(workout[0].favorite){
       workout[0].favorite = false;
     }else {workout[0].favorite = true;}

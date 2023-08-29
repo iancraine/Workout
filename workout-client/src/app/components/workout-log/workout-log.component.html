@@ -1,23 +1,32 @@
 <div class="page">
-    <div class="page-title">
-        <h2 class="title">Workouts</h2>
+    <div class="title">
+        <h1>Workouts</h1>
     </div>
 
     <div class="details-background">
         <div class="elements-container">
             <div *ngFor="let workout of workouts" class="card" > 
-                <div class="element">
-                    <h1 (click)="openDialog(workout[0].workoutId)">{{workout[0].workoutName}}</h1>
+                <div class="element" (click)="openDialog(workout[0].workoutId)">
+                    <h1>{{workout[0].workoutName}}
+                        <i class="ri-star-line favorite-btn" *ngIf="!workout[0].favorite" (click)="toggleFavorite($event,workout)"></i>
+                        <i class="ri-star-fill unfavorite-btn" *ngIf="workout[0].favorite" (click)="toggleFavorite($event,workout)"></i>
+                    </h1>
 
+                    
                     <div class="element-description">
-                        <h5>Date: </h5>
-                        <p class="description-box">{{workout[0].workoutDate}}</p>
+                        <div>
+                            <h5>Description: </h5>
+                            <p class="description-box" style="margin-right: 2rem;">{{workout[0].workoutNote}}</p>
+                        </div>
+                        <div>
+                            <p class="date">{{workout[0].workoutDate}}</p>
+                        </div>
                     </div>
-
-                    <i class="ri-heart-add-fill" *ngIf="!workout[0].favorite" (click)="toggleFavorite(workout)">Favorite</i>
-                    <i class="ri-heart-add-fill" *ngIf="workout[0].favorite" (click)="toggleFavorite(workout)">Unfavorite</i>
-
+                    
                 </div>
+
+                
+                
             </div>
         </div>
     </div>

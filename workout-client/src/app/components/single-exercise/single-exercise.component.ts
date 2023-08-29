@@ -7,7 +7,7 @@ import { Workout } from 'src/app/models/workout';
 import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-single-exercise',
@@ -28,7 +28,7 @@ export class SingleExerciseComponent implements OnInit{
 
   constructor(
     private exerciseService: ExerciseListService,
-    private route: ActivatedRoute,
+    private ref: MatDialogRef<SingleExerciseComponent>,
     private router: Router,
     private newWorkoutService: NewWorkoutService,
     private dialogRef: MatDialog,
@@ -41,11 +41,12 @@ export class SingleExerciseComponent implements OnInit{
     // this.route.paramMap.subscribe(value => {
     //   this.exercise.exerciseId = Number(value.get('exerciseId')!);
     // })
-
-    this.exercise = this.data.exercise;
-    console.log(this.exerciseId);
-    
-
+    if(this.data.exercise){
+      this.exercise = this.data.exercise;
+    }else{
+      this.exercise.exerciseId = this.data.exerciseId;
+      this.getExercise();
+    }    
 
     // this.getExercise();
     this.workoutStart$ = this.newWorkoutService.getForm();    
@@ -98,6 +99,9 @@ export class SingleExerciseComponent implements OnInit{
         exerciseName: exerciseName,
       }}
     );
+  }
+  closePopup(){
+    this.ref.close();
   }
 
 }
