@@ -1,6 +1,8 @@
 <div class="page">
     <div class="exercise-container">
 
+        <app-add-to-group [exercise] = 'exercise' *ngIf="edit"></app-add-to-group>
+
         <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit()" class="exercise-form">
  
                 <div class="title">

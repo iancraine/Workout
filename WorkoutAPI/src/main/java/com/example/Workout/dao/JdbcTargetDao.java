@@ -80,7 +80,7 @@ public class JdbcTargetDao implements TargetDao {
 
     @Override
     public void addExerciseToTarget(int targetId, int exerciseId) {
-        String sql = "INSERT INTO target_exercise(target_id, target_name) " +
+        String sql = "INSERT INTO target_exercise(target_id, exercise_id) " +
                 "VALUES (?,?);\n";
         jdbcTemplate.update(sql,targetId,exerciseId);
     }

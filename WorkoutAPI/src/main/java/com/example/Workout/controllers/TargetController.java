@@ -1,6 +1,7 @@
 package com.example.Workout.controllers;
 
 import com.example.Workout.dao.TargetDao;
+import com.example.Workout.model.Exercise;
 import com.example.Workout.model.Target;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class TargetController {
     }
 
     @RequestMapping(path = "/{targetId}/addexercise", method = RequestMethod.POST)
-    public void addExerciseToTarget(@PathVariable int targetId, @RequestBody int exerciseId){
-        targetDao.addExerciseToTarget(targetId,exerciseId);
+    public void addExerciseToTarget(@PathVariable int targetId, @RequestBody Exercise exercise){
+        targetDao.addExerciseToTarget(targetId,(exercise.getExerciseId()));
     }
 }

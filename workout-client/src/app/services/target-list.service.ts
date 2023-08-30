@@ -1,18 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Target } from '../models/target';
+import { Exercise } from '../models/exercise';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TargetListService {
+  
 
   private baseUrl!: string
 
 
   constructor(private http:HttpClient) {
     this.baseUrl = 'http://localhost:3000';
+    
    }
 
   getAllTargets() : Observable<Target[]>{
@@ -30,7 +33,10 @@ export class TargetListService {
   deleteTarget(targetId: string){
     return this.http.delete(`${this.baseUrl}/remove/${targetId}`);
   }
-  addExerciseToTarget(targetId: string, exerciseId:string){
-    return this.http.post(`${this.baseUrl}/${targetId}/addexercise`, exerciseId)
+  addExerciseToTarget(targetId: string, exercise:Exercise){
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({ 'Accept': 'application/json', 'Content-Type': 'application/json' })
+  // };
+    return this.http.post<Exercise>(`${this.baseUrl}/${targetId}/addexercise`, exercise)
   }
 }

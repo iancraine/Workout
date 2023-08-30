@@ -1,5 +1,6 @@
 <div class="page">
     <div class="title">
+        <app-add-to-group *ngIf="editTarget" [target] = 'currentTarget'></app-add-to-group>
         <h1 *ngIf="!editTarget">{{currentTarget.targetName}} Exercises
             <button (click)="toggleForm()" *ngIf="!editTarget" class="ri-edit-2-line edit"></button>
         </h1>

@@ -21,6 +21,7 @@ import { SingleExerciseComponent } from './components/single-exercise/single-exe
 import { NewWorkoutComponent } from './components/new-workout/new-workout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SingleWorkoutPopupComponent } from './components/single-workout-popup/single-workout-popup.component';
+import { AddToGroupComponent } from './components/add-to-group/add-to-group.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SingleWorkoutPopupComponent } from './components/single-workout-popup/s
     SingleExerciseComponent,
     NewWorkoutComponent,
     SingleWorkoutPopupComponent,
+    AddToGroupComponent,
   ],
   imports: [
     BrowserModule,

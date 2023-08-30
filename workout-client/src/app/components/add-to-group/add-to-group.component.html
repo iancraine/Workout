@@ -1,0 +1,49 @@
+<div class="page">
+    <div class="container">
+        <div *ngIf="target">
+            <form #exerciseForm = 'ngForm' (ngSubmit)="submitExercise(exerciseForm)" class="exercise-input">
+    
+                <div class="exercise-ele">
+                    <div>
+                        <label for="exercise">Exercise: </label>
+                        <select
+                        id="exercise"
+                        name="exercise"
+                        ngModel
+                        #exercise ='ngModel'
+                        required
+                        >
+                            <option selected="selected" value="">None</option>
+                            <option *ngFor="let exercise of exercises$|async" [ngValue]="exercise">{{exercise.exerciseName}}</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseForm.invalid">Add Exercise</button></div>
+            </form>
+        </div>
+
+        <div *ngIf="exercise">
+            <form #exerciseForm = 'ngForm' (ngSubmit)="submitExercise(exerciseForm)" class="exercise-input">
+    
+                <div class="exercise-ele">
+                    <div>
+                        <label for="exercise">Group: </label>
+                        <select
+                        id="target"
+                        name="target"
+                        ngModel
+                        #target ='ngModel'
+                        required
+                        >
+                            <option selected="selected" value="">None</option>
+                            <option *ngFor="let group of targetList" [ngValue]="group">{{group.targetName}}</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseForm.invalid">Add to Group</button></div>
+            </form>
+        </div>
+    </div>
+</div>
