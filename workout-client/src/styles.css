@@ -63,5 +63,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: linear-gradient(45deg, red, blue);
   opacity: .2!important;
 }
+.mat-dialog-content {
+  color: white !important;
+}
 
 

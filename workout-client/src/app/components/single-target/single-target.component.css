@@ -131,7 +131,7 @@ button:focus{
 background-image: radial-gradient(100% 100% at 100% 0, #5a78ff 0, #c01291 100%);
 margin-right: 1rem;
 }
-.add-button{
+.add-button, .remove-button{
     position: relative;
     left: 285px;
     bottom: 50px;
@@ -147,4 +147,9 @@ margin-right: 1rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     border: white solid 2px;
     cursor: pointer;
+}
+.remove-button{
+    background-image: radial-gradient(100% 100% at 100% 0, #5a78ff 0, #c01291 100%);
+    bottom: 400px;
+    font-size: 20px;
 }

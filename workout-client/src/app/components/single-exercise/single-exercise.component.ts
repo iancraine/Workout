@@ -8,6 +8,7 @@ import { ExerciseListService } from 'src/app/services/exercise-list.service';
 import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddToGroupComponent } from '../add-to-group/add-to-group.component';
 
 @Component({
   selector: 'app-single-exercise',
@@ -102,6 +103,16 @@ export class SingleExerciseComponent implements OnInit{
   }
   closePopup(){
     this.ref.close();
+  }
+  openTargetPopup(exercise: Exercise){
+    this.dialogRef.open(AddToGroupComponent,
+      {
+      width: '80%',
+      backdropClass:'popupBackdrop',
+      data: {
+        exercise: exercise,
+      }}
+    );
   }
 
 }

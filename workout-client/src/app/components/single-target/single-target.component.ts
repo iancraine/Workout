@@ -10,6 +10,7 @@ import { NewWorkoutService } from 'src/app/services/new-workout.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { NewWorkoutComponent } from '../new-workout/new-workout.component';
 import { SingleExerciseComponent } from '../single-exercise/single-exercise.component';
+import { AddToGroupComponent } from '../add-to-group/add-to-group.component';
 
 @Component({
   selector: 'app-single-target',
@@ -121,5 +122,23 @@ export class SingleTargetComponent implements OnInit{
       }}
     );
   }
+  removeExercise(exerciseId: number){
+    this.targetService.removeExerciseFromTarget(this.targetId,exerciseId.toString()).subscribe(
+      () => {
+        location.reload();
+      }
+    );
+  }
+  openTargetPopup(targetId: number){
+    this.dialogRef.open(AddToGroupComponent,
+      {
+      width: '80%',
+      backdropClass:'popupBackdrop',
+      data: {
+        targetId: targetId,
+      }}
+    );
+  }
+  
 
 }

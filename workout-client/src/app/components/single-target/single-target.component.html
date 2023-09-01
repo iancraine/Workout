@@ -1,6 +1,5 @@
 <div class="page">
     <div class="title">
-        <app-add-to-group *ngIf="editTarget" [target] = 'currentTarget'></app-add-to-group>
         <h1 *ngIf="!editTarget">{{currentTarget.targetName}} Exercises
             <button (click)="toggleForm()" *ngIf="!editTarget" class="ri-edit-2-line edit"></button>
         </h1>
@@ -17,7 +16,7 @@
     </div>
         
     <div style="text-align: center;">
-        <button class="addNewExercise">Add New Exercise</button>
+        <button class="addNewExercise" (click)="openTargetPopup(currentTarget.targetId)">Add New Exercise</button>
     </div>
     
     <div class="exercises-background">
@@ -42,6 +41,8 @@
                     </div>
                 </div>
 
+                <button class="remove-button" *ngIf="editTarget"
+                    (click)="removeExercise(item.exerciseId)">X</button>
                 <button class="ri-add-line add-button" *ngIf="workoutStart$|async"
                     (click)="openPopup(item.exerciseId, item.exerciseName)"></button>
             </div>

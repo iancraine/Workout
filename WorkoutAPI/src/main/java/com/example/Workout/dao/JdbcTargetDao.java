@@ -85,6 +85,13 @@ public class JdbcTargetDao implements TargetDao {
         jdbcTemplate.update(sql,targetId,exerciseId);
     }
 
+    @Override
+    public void removeExerciseFromTarget(int targetId, int exerciseId) {
+        String sql = "DELETE FROM target_exercise WHERE target_id = ? AND exercise_id = ?;";
+        jdbcTemplate.update(sql, targetId, exerciseId);
+    }
+
+
     private Target mapRowToTarget(SqlRowSet rowSet) {
         Target result = new Target();
 

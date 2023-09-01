@@ -2,6 +2,9 @@
     margin: 0px;
     background-color: var(--body-color);
 }
+.exercise-container{
+    position: relative;
+}
 .button-container{
     text-align: center;
 }
@@ -32,11 +35,11 @@
     padding: 1rem;
 }
 .description{
-    color: black;
+    color: white;
     padding: 10px;
-    background: white;
-    border-radius: 2rem;
-    width: 40%;
+    /* background: white;
+    border-radius: 2rem; */
+    /* width: 40%; */
 }
 /* .exercise-pic{
     width: 50px;
@@ -109,3 +112,4 @@ img {
 .close:hover{
     background: grey;
 }
+

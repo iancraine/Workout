@@ -1,39 +1,45 @@
 <div class="page">
     <div class="exercise-container">
 
-        <app-add-to-group [exercise] = 'exercise' *ngIf="edit"></app-add-to-group>
+        
 
         <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit()" class="exercise-form">
+            
+
  
-                <div class="title">
-                    <h1 *ngIf="!edit">{{exercise.exerciseName}}
-                        <button *ngIf="!edit" (click)="toggleForm()" class="ri-edit-2-line edit"></button>
-                    </h1>
+            <div class="title">
+                <h1 *ngIf="!edit">
+                    <button type="button" class="ri-play-list-add-line edit" style="margin-right: 0;" (click)="openTargetPopup(exercise)"></button>
+                    {{exercise.exerciseName}}
+                    <button type="button" *ngIf="!edit" (click)="toggleForm()" class="ri-edit-2-line edit"></button>
+                </h1>
 
-                    <div *ngIf="edit">
-                        <input type="text" [(ngModel)]="exercise.exerciseName" name="exerciseName">
-                        <button (click)="toggleForm()" class="edit" id="cancel">Cancel</button>
-                    </div>
+                <div *ngIf="edit">
+                    <input type="text" [(ngModel)]="exercise.exerciseName" name="exerciseName">
+                    <button (click)="toggleForm()" class="edit" id="cancel">Cancel</button>
                 </div>
-                
-                
+            </div>
+            
+            
 
+            <div mat-dialog-content>
                 <div class="picture">
                     <img *ngIf="exercise.exercisePic == null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvZqTZME1qLUb6P4IqP9VDdj_Zzsyb-G_wCw&usqp=CAU"
                         alt="" class="exercise-pic">
                     <img *ngIf="exercise.exercisePic != null" src={{exercise.exercisePic}} alt="" class="exercise-pic">
                 </div>
-
-                <div>Description: </div>
-                <div class="description">
-                    <p *ngIf="!edit">{{exercise.exerciseDesc}}</p>
-                    <textarea *ngIf="edit" cols="30" rows="10" [(ngModel)]="exercise.exerciseDesc" name="exerciseDesc"></textarea>
+                <div style="color: white;">Description: </div>
+                <div *ngIf="!edit" class="description">
+                    <p>{{exercise.exerciseDesc}}</p>
+                
                 </div>
+                <textarea *ngIf="edit" cols="30" rows="10" [(ngModel)]="exercise.exerciseDesc" name="exerciseDesc"></textarea>
+            </div>
 
-                <div class="button-container">
-                    <button class="ri-add-line add-button" *ngIf="!edit && (workoutStart$|async)" type="button"
-                        (click)="openPopup(exercise.exerciseId, exercise.exerciseName)"></button>
-                </div>
+            <div class="button-container">
+                <button class="ri-add-line add-button" *ngIf="!edit && (workoutStart$|async)" type="button"
+                    (click)="openPopup(exercise.exerciseId, exercise.exerciseName)"></button>
+            </div>
             
             <button *ngIf="edit" class="action" type="submit" [disabled]="exerciseForm.invalid">Save Exercise</button>
         </form>

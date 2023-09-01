@@ -39,4 +39,8 @@ export class TargetListService {
   // };
     return this.http.post<Exercise>(`${this.baseUrl}/${targetId}/addexercise`, exercise)
   }
+
+  removeExerciseFromTarget(targetId: string, exerciseId:string){
+    return this.http.delete(`${this.baseUrl}/${targetId}/${exerciseId}`)
+  }
 }

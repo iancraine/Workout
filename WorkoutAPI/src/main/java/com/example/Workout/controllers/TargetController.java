@@ -45,4 +45,9 @@ public class TargetController {
     public void addExerciseToTarget(@PathVariable int targetId, @RequestBody Exercise exercise){
         targetDao.addExerciseToTarget(targetId,(exercise.getExerciseId()));
     }
+
+    @RequestMapping(path = "/{targetId}/{exerciseId}", method = RequestMethod.DELETE)
+    public void deleteExerciseFromTarget(@PathVariable int targetId, @PathVariable int exerciseId){
+        targetDao.removeExerciseFromTarget(targetId, exerciseId);
+    }
 }
