@@ -64,3 +64,8 @@ td{
 tbody>tr:nth-child(odd){
     background-color: rgb(65, 68, 92);
 }
+@media only screen and (max-width: 768px) {
+    .card{
+        width: 90%;   
+    }
+}

@@ -16,9 +16,9 @@
         </div>
         
         <div class="title" style="padding-bottom: 0;">Description: </div>
-        <div class="description">
-            <p *ngIf="!edit">{{workout[0].workoutNote}}</p>
-            <textarea [(ngModel)]="workout[0].workoutNote" *ngIf="edit"></textarea>
+        <textarea [(ngModel)]="workout[0].workoutNote" *ngIf="edit"></textarea>
+        <div *ngIf="!edit" class="description">
+            <p>{{workout[0].workoutNote}}</p>
         </div>
 
         <div>

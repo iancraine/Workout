@@ -5,7 +5,7 @@
 }
 .container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 .action {
@@ -79,4 +79,7 @@ button:disabled{
     flex-direction: column;
     justify-content: center;
     align-items: center; */
+}
+.exercise-ele{
+    margin-left: 1rem;
 }

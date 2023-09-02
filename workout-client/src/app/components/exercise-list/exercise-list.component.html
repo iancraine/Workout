@@ -1,12 +1,15 @@
 <div class="page">
     <div class="page-title">
-      <h2 class="title">Exercises</h2>
+        <h2 class="title">Exercises</h2>
 
-      <app-target-list/>
-    
+        <app-target-list/>
+        
+        <app-new-exercise *ngIf="showForm"/>
+        
         <div class="button-container">
             <div class="edit-button">
-                <button (click)="toggleForm()" class="button-29">Add New Exercise</button>
+                <button (click)="toggleForm()" *ngIf="!showForm" class="button-29">Add New Exercise</button>
+                <button (click)="toggleForm()" *ngIf="showForm" class="button-29">Cancel</button>
             </div>
         
             <div class="search-input">
@@ -15,7 +18,7 @@
                     (input)="filterExercise()">
             </div>
         </div>
-      <app-new-exercise *ngIf="showForm"/>
+      
 
     </div> 
     

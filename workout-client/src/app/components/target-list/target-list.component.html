@@ -3,11 +3,6 @@
     <!-- Side scroll bar for all groups on click route to single target
     component to list exercises in group -->
     <div class="target-scroller snaps-inline">
-        <div *ngFor="let item of targets">
-            <div class="target-element">
-                <a [routerLink]="['/exercises', item.targetId]"><h1>{{item.targetName}}</h1></a>
-            </div>
-        </div>
         <div class="target-element" *ngIf="!showForm" (click) = 'toggleForm()'>Add A Group <i class="ri-add-circle-fill"></i></div>
         <div class="target-element" *ngIf="showForm" (click) = 'toggleForm()'>Cancel</div>
         <div class="target-element" *ngIf="showForm">
@@ -25,5 +20,11 @@
             </form>
             
         </div>
+        <div *ngFor="let item of targets">
+            <div class="target-element">
+                <a [routerLink]="['/exercises', item.targetId]" ><h1 class="link">{{item.targetName}}</h1></a>
+            </div>
+        </div>
+        
     </div>
 </div>

@@ -79,5 +79,18 @@ nav li{
 .floating-btn.started-floating-btn{
     background: hsl(280, 81%, 36%);
 }
+@media only screen and (max-width: 600px) {
+    .nav-data{
+        display: none;
+    }
+    nav{
+        justify-content: center;
+    }
+    .nav-list{
+        justify-content: space-around;
+        align-items: center;
+        padding-right: 0;
+    }
+}
 
 

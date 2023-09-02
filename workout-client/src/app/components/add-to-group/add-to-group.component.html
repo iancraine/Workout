@@ -1,7 +1,7 @@
 <div class="page">
     <div class="container">
-        <div *ngIf="data.exercise">Add Exercise To A Group</div>
-        <div *ngIf="data.targetId">Add An Exercise</div>
+        <div *ngIf="data.exercise" style="padding-left: 1rem;">Add Exercise To A Group</div>
+        <div *ngIf="data.targetId" style="padding-left: 1rem;">Add An Exercise</div>
 
         <div *ngIf="data.targetId">
             <form #exerciseForm = 'ngForm' (ngSubmit)="submitExercise(exerciseForm)" class="exercise-input">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
     
-                <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseForm.invalid">Add Exercise to Group</button></div>
+                <div class="add-exercise"><button class="action" type="submit" [disabled]="exerciseForm.invalid">Add Exercise</button></div>
             </form>
         </div>
 

@@ -1,8 +1,8 @@
-<div class="container mt-5">
+<div class="container">
 
-    <div class="form-area">
+    
 
-        <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit(exerciseForm)">
+        <form #exerciseForm = 'ngForm' class="form-area" (ngSubmit)="onSubmit(exerciseForm)">
             <div class="form-group">
                 <div><label>Name Your Exercise: </label></div>
                 <input 
@@ -41,6 +41,5 @@
     
             <button type="submit" [disabled]="exerciseForm.invalid">Add</button>
         </form>
-    </div>
 </div>
 

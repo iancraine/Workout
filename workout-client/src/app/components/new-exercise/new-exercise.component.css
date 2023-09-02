@@ -3,15 +3,21 @@
 }
 .container{
     position: relative;
-    width: 50%;
-    left:  25%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     padding: 10px;
 }
 .form-area{
-text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
 background-color: var(--first-color-lighten);
 border: 1px solid white;
 border-radius: 2rem;
+width: 80%;
 padding: 10px;
 
 }
@@ -26,3 +32,4 @@ input,textarea{
 input:focus{
     border: 3px solid rgb(204, 52, 164);
 }
+

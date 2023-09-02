@@ -9,14 +9,14 @@
             <button (click)="toggleForm()" class="edit" id="cancel">Cancel</button>
         </div>
         
-        <div class="button-container">
-            <button  (click)="updateTarget()" class="action" *ngIf="editTarget">Save</button>
-            <button (click)="deleteTarget()" class="action" id="finish-btn" *ngIf="editTarget">Delete This Group</button>
+        <div class="button-container" *ngIf="editTarget">
+            <button  (click)="updateTarget()" class="action" >Save</button>
+            <button (click)="deleteTarget()" class="action" id="finish-btn">Delete This Group</button>
         </div>
     </div>
         
     <div style="text-align: center;">
-        <button class="addNewExercise" (click)="openTargetPopup(currentTarget.targetId)">Add New Exercise</button>
+        <button class="addNewExercise" (click)="openTargetPopup(currentTarget.targetId)">Add Exercise To Group</button>
     </div>
     
     <div class="exercises-background">

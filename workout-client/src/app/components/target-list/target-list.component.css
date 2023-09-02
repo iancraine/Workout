@@ -1,11 +1,19 @@
-.target-scroller{
+/* .target-scroller{
     display: grid;
     
-    /* causing side scroll */
-    gap: 1rem;
+    gap: 2rem;
     grid-auto-flow: column;
     grid-auto-columns: 13%;
 
+    padding: 0 1rem 1rem;
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+} */
+.target-scroller{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
     padding: 0 1rem 1rem;
 
     overflow-x: auto;
@@ -14,6 +22,7 @@
 .target-element{
     justify-content: center;
     display: grid;
+    overflow-wrap: break-word;
     grid-template-rows: min-content;
     gap: 1rem;
     padding: 1rem;
@@ -35,4 +44,7 @@
 }
 a{
     color: inherit;
+}
+.link{
+    overflow-wrap: break-word;
 }

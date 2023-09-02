@@ -64,7 +64,7 @@ export class ExerciseListComponent implements OnInit {
   openExercisePopup(exercise: Exercise){
     this.dialogRef.open(SingleExerciseComponent,
       {
-      width: '60%',
+      width: '70%',
       backdropClass:'popupBackdrop',
       data: {
         exercise: exercise,
