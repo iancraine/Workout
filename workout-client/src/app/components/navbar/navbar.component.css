@@ -33,7 +33,7 @@ nav{
     font-size: 1.25rem;
 }
 .nav-logo:hover{
-    color: hsl(33, 80%, 49%);
+    color: #5adaff;
 }
 .nav-list{
     display: flex;

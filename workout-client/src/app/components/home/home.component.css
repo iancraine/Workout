@@ -1,0 +1,69 @@
+.page{
+    margin: 0px;
+    background-image: url(src\assets\pexels-victor-freitas-2261477.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* height: 100vh; */
+}
+.container{
+    color: white;
+    background: var(--first-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem 0 3rem;
+    width: 80%;
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 2px solid white;
+    
+}
+.title{
+    text-align: center;
+}
+.floating-btn{
+    width: 30px;
+    height: 30px;
+    background: var(--first-color);
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border: white solid 2px;
+}
+.direction-img{
+    display: block;
+    width: 200px;
+    height: 150px;
+    aspect-ratio: 16 9;
+}
+.images{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+}
+li{
+    border: 1px solid grey;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+.directions,.about{
+    padding-top: 2rem;
+}
+h3{
+    border-bottom: 3px dotted grey;
+}
+.gradient{
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
