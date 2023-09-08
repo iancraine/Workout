@@ -14,15 +14,15 @@ export class TargetListService {
 
 
   constructor(private http:HttpClient) {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'http://workout-app-env.eba-irfcb6jm.us-east-2.elasticbeanstalk.com';
     
    }
 
   getAllTargets() : Observable<Target[]>{
-    return this.http.get<Target[]>("http://localhost:3000/groups");
+    return this.http.get<Target[]>(this.baseUrl+"/groups");
   }
   getTargetById(targetId: string): Observable<Target>{
-    return this.http.get<Target>(`http://localhost:3000/group/${targetId}`);
+    return this.http.get<Target>(`${this.baseUrl}/group/${targetId}`);
   }
   addTarget(newTarget: Target){
     return this.http.post<Target>(this.baseUrl+"/addgroup", newTarget);

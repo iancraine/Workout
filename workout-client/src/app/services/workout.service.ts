@@ -11,7 +11,7 @@ export class WorkoutService {
 
 
   constructor(private http:HttpClient) { 
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'http://workout-app-env.eba-irfcb6jm.us-east-2.elasticbeanstalk.com';
   }
 
   getAllWorkouts() : Observable<Array<Array<Workout>>>{
