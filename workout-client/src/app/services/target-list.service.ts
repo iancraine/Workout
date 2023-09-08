@@ -14,7 +14,7 @@ export class TargetListService {
 
 
   constructor(private http:HttpClient) {
-    this.baseUrl = 'http://workout-app-env.eba-irfcb6jm.us-east-2.elasticbeanstalk.com';
+    this.baseUrl = 'https://worktout-38c4b55b57ea.herokuapp.com';
     
    }
 
