@@ -33,7 +33,7 @@
                     <p>{{exercise.exerciseDesc}}</p>
                 
                 </div>
-                <textarea *ngIf="edit" cols="30" rows="10" [(ngModel)]="exercise.exerciseDesc" name="exerciseDesc"></textarea>
+                <textarea *ngIf="edit" cols="30" rows="5" [(ngModel)]="exercise.exerciseDesc" name="exerciseDesc"></textarea>
             </div>
 
             <div class="button-container">
@@ -41,8 +41,10 @@
                     (click)="openPopup(exercise.exerciseId, exercise.exerciseName)"></button>
             </div>
             
-            <button mat-dialog-actions *ngIf="edit" class="action" type="submit" [disabled]="exerciseForm.invalid">Save Exercise</button>
-            <button class="action" id="finish-btn" *ngIf="edit" (click)="deleteExercise()">Delete Exercise</button>
+            <div class="main-actions">
+                <button mat-dialog-actions *ngIf="edit" class="action" type="submit" [disabled]="exerciseForm.invalid">Save Exercise</button>
+                <button mat-dialog-actions class="action" id="finish-btn" *ngIf="edit" (click)="deleteExercise()">Delete Exercise</button>
+            </div>
         </form>
 
         <!-- <div mat-dialog-actions class="finish-container">

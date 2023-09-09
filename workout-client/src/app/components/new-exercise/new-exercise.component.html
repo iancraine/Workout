@@ -14,6 +14,7 @@
                 #exerciseName = 'ngModel' 
                 required
                 minlength="1"
+                maxlength="50"
                 [ngClass]="{'is-invalid': exerciseName.touched && exerciseName.invalid}">
             </div>
             <div *ngIf="exerciseName.errors?.['required']">
