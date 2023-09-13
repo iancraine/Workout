@@ -34,9 +34,6 @@ export class TargetListService {
     return this.http.delete(`${this.baseUrl}/remove/${targetId}`);
   }
   addExerciseToTarget(targetId: string, exercise:Exercise){
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({ 'Accept': 'application/json', 'Content-Type': 'application/json' })
-  // };
     return this.http.post<Exercise>(`${this.baseUrl}/${targetId}/addexercise`, exercise)
   }
 

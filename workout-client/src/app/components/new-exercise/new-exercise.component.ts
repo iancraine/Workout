@@ -31,7 +31,6 @@ export class NewExerciseComponent {
     this.exerciseService.addExercise(this.newExercise).subscribe(
       response => {
         location.reload();
-        // this.clear();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

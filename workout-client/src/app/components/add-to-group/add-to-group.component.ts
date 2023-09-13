@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +25,6 @@ export class AddToGroupComponent implements OnInit{
   
 
 
-  // @Input() target!: Target;
 
 
   constructor(
@@ -82,6 +80,4 @@ export class AddToGroupComponent implements OnInit{
     this.ref.close();
     this.targetRef.close();
   }
-
-
 }

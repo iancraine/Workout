@@ -1,6 +1,5 @@
 .page{
     margin: 0px;
-    /* background-color: hsl(248, 79%, 19%); */
     background-color: var(--body-color);
 
 }
@@ -51,7 +50,6 @@ h1{
     border-radius: 15px;
     float: left;
     object-fit: contain;
-    /* background-color: white; */
 }
 .description, .description-box{
     padding: 5px;
@@ -91,9 +89,7 @@ button:focus{
 
 
 .search-input input{
-    /* width: 100%; */
     border: 1px solid rgba(255, 255, 255, 0.25);
-    /* background: var(--body-color); */
     padding: 10px;
     outline: none;
     color: black;
@@ -102,7 +98,6 @@ button:focus{
     right: 0;
 }
 .search-input i{
-    /* position: absolute; */
     color: grey;
 }
 
@@ -124,7 +119,6 @@ button:focus{
     overflow: hidden;
     padding-left: 16px;
     padding-right: 16px;
-    /* position: relative; */
     text-align: left;
     text-decoration: none;
     transition: box-shadow .15s,transform .15s;

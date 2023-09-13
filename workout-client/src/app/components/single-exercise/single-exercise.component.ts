@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
 import { Workout } from 'src/app/models/workout';
@@ -38,10 +38,7 @@ export class SingleExerciseComponent implements OnInit{
 
     ){}
 
-  ngOnInit(){    
-    // this.route.paramMap.subscribe(value => {
-    //   this.exercise.exerciseId = Number(value.get('exerciseId')!);
-    // })
+  ngOnInit(){
     if(this.data.exercise){
       this.exercise = this.data.exercise;
     }else{
@@ -49,7 +46,6 @@ export class SingleExerciseComponent implements OnInit{
       this.getExercise();
     }    
 
-    // this.getExercise();
     this.workoutStart$ = this.newWorkoutService.getForm();    
 
     

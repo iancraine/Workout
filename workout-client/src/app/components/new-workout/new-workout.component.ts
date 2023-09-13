@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit,} from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Exercise } from 'src/app/models/exercise';
@@ -31,7 +31,7 @@ export class NewWorkoutComponent implements OnInit {
 
   //Get after workout started
   public currentWorkout$!: Observable<Workout[]>;
-  //Get with exerciseId*************************************
+  //Get with exerciseId
   public selectedExercise!: Workout;
   //Data from clicked exercise
   exerciseId:number = 0;

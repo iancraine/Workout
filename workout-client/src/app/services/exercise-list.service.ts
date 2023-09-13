@@ -53,7 +53,6 @@ export class ExerciseListService {
     return this.http.get<Exercise>(`${this.baseUrl}/exercise/${exerciseId}`)
   }
 
-  // Pass targetId from click on exercises page
   getExercisesByTarget(targetId: string) : Observable<Exercise[]> {
     return this.http.get<Exercise[]>(`${this.baseUrl}/exercises/${targetId}`);
   }

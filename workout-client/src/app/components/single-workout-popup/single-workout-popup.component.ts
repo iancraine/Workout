@@ -54,7 +54,6 @@ export class SingleWorkoutPopupComponent implements OnInit{
   toggleForm(){
     if(this.edit){
       this.edit = false;
-      // this.getWorkout();
     }else{this.edit = true;}    
   }
 

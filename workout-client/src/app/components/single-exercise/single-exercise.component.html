@@ -5,8 +5,6 @@
 
         <form #exerciseForm = 'ngForm' (ngSubmit)="onSubmit()" class="exercise-form">
             
-
- 
             <div class="title">
                 <h1 *ngIf="!edit">
                     <button type="button" class="ri-play-list-add-line edit" style="margin-right: 0;" (click)="openTargetPopup(exercise)"></button>
@@ -46,10 +44,6 @@
                 <button mat-dialog-actions class="action" id="finish-btn" *ngIf="edit" (click)="deleteExercise()">Delete Exercise</button>
             </div>
         </form>
-
-        <!-- <div mat-dialog-actions class="finish-container">
-            <button class="action" id="finish-btn" *ngIf="edit" (click)="deleteExercise()">Delete Exercise</button>
-        </div> -->
 
     </div>
     <button (click)="closePopup()" class="close">X</button>

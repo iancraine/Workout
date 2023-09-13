@@ -9,9 +9,6 @@
     align-items: center;
     gap: 1rem;
     padding: 10px;
-    /* border: 2px solid red;
-    height: calc(100vh - 6rem); */
-
 }
 input, textarea{
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -78,7 +75,6 @@ textarea{
     overflow: hidden;
     padding-left: 16px;
     padding-right: 16px;
-    /* position: relative; */
     text-align: left;
     text-decoration: none;
     transition: box-shadow .15s,transform .15s;

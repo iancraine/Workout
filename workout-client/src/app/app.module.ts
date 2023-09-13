@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import { MatInputModule } from '@angular/material/input';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,10 +44,6 @@ import { AddToGroupComponent } from './components/add-to-group/add-to-group.comp
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    // Unused
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

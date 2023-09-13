@@ -68,7 +68,6 @@ nav li{
     right: 20px;
     bottom: 20px;
     transition: background 0.25s;
-    /* outline: black; */
     border: white solid 2px;
     cursor: pointer;
     z-index: 1;

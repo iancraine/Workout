@@ -1,7 +1,5 @@
 <div>
 
-    <!-- Side scroll bar for all groups on click route to single target
-    component to list exercises in group -->
     <div class="target-scroller snaps-inline">
         <div class="target-element" *ngIf="!showForm" (click) = 'toggleForm()'>Add A Group <i class="ri-add-circle-fill"></i></div>
         <div class="target-element" *ngIf="showForm" (click) = 'toggleForm()'>Cancel</div>

@@ -1,21 +1,9 @@
-/* .target-scroller{
-    display: grid;
-    
-    gap: 2rem;
-    grid-auto-flow: column;
-    grid-auto-columns: 13%;
 
-    padding: 0 1rem 1rem;
-
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-} */
 .target-scroller{
     display: flex;
     justify-content: flex-start;
     gap: 1.5rem;
     padding: 0 1rem 1rem;
-
     overflow-x: auto;
     overscroll-behavior-inline: contain;
 }
@@ -27,7 +15,6 @@
     gap: 1rem;
     padding: 1rem;
     background: linear-gradient(30deg, rgb(192, 2, 116), blue);
-    /* background-color: var(--first-color); */
     border-radius: 1rem;
     cursor: pointer;
 }
@@ -44,7 +31,4 @@
 }
 a{
     color: inherit;
-}
-.link{
-    overflow-wrap: break-word;
 }
